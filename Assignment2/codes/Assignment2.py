@@ -75,8 +75,8 @@ ax = fig1.add_subplot(111,projection='3d')
 #ax = fig1.add_subplot(111,projection='3d',aspect='equal')
 
 #Points on the plane
-A1 = np.array([4,0,4]).reshape((3,1))
-B1 = np.array([3,1,-2]).reshape((3,1))
+A1 = np.array([7,-3,-10]).reshape((3,1))
+B1 = np.array([0,4,4]).reshape((3,1))
 C1 = np.array([5,-6,-60]).reshape((3,1))
 D1 = np.array([2,-1,-56]).reshape((3,1))
 
@@ -96,8 +96,8 @@ ax.scatter(B1[0],B1[1],B1[2],'o')
 ax.scatter(C1[0],C1[1],C1[2],'o')
 ax.scatter(D1[0],D1[1],D1[2],'o')
 
-ax.text(4,0,4, "A", color='red')
-ax.text(3,1,-2, "B", color='red')
+ax.text(7,-3,-10, "A", color='red')
+ax.text(0,4,4, "B", color='red')
 ax.text(5,-6,-60, "C", color='red')
 ax.text(2,-1,-56, "D", color='red')
 
