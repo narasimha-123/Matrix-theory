@@ -212,40 +212,40 @@ Here, Rank(A) $\neq$ Rank(A$\mid$B). Hence, these three equations are inconsiste
 \\
 The given equations are in the form:
 \begin{align}
-    \textbf{x}=p_1 + \lambda_1d_1\\
-    \textbf{x}=p_2 + \lambda_2d_2
+    \textbf{x}=\vec{p_1} + \lambda_1\vec{d_1}\\
+    \textbf{x}=\vec{p_2} + \lambda_2\vec{d_2}
 \end{align}
-Where, $p_1$ and $p_2$ are points on line1 and line2 respectively. Also, $d_1$ and $d_2$ are the direction vectors of respective lines.
-The cross product of $d_1$ and $d_2$ is perpendicular to both lines.
+Where, $\vec{p_1}$ and $\vec{p_2}$ are points on line1 and line2 respectively. Also, $\vec{d_1}$ and $\vec{d_2}$ are the direction vectors of respective lines.
+The cross product of $\vec{d_1}$ and $\vec{d_2}$ is perpendicular to both lines.
 \begin{align}
-    \vec{n} = d_1 \times d_2\\
-     n=\begin{vmatrix}i & j & k\\3 &2 &6\\1&2&2\end{vmatrix}
-     \implies n=\myvec{-8 \\ 0 \\ 4}
+    \vec{n} = \vec{d_1} \times \vec{d_2}\\
+     \vec{n}=\myvec{4-8 \\ -(6-6) \\ 6-2}
+     \implies \vec{n}=\myvec{-8 \\ 0 \\ 4}
 \end{align}
 \\
-When the line2 is translated along the vector \vec{n}, it forms a plane. This plane intersects line1 at a single point $c_1$ which is nearest to the line2. Point $c_1$ is given by:
+When the line2 is translated along the vector \vec{n}, it forms a plane. This plane intersects line1 at a single point $\vec{c_1}$ which is nearest to the line2. Point $\vec{c_1}$ is given by:
 \\
 \begin{align}
-c_1=p_1+\frac{(p_2-p_1)\cdot n_2}{d_1\cdot n_2}d_1 \\
-where, n_2=d_2\times n\\
- \therefore n_2=\begin{vmatrix}i & j & k\\1 &2 &2\\-8&0&4\end{vmatrix}
-\implies n_2=\myvec{8 \\ -20 \\ 16}\\
-\therefore c_1= \myvec{2\\-5\\1}+\frac{\myvec{5\\-1\\-1}\cdot \myvec{8\\-20\\16}}{\myvec{3\\2\\6}\cdot \myvec{8\\-20\\16}}\myvec{3\\2\\6}\\
-\implies c_1=\myvec{3.65\\-3.9\\4.3}
+\vec{c_1}=\vec{p_1}+\frac{(\vec{p_2}-\vec{p_1})^T \vec{n_2}}{\vec{d_1}^T \vec{n_2}}\vec{d_1} \\
+where, \vec{n_2}=\vec{d_2}\times \vec{n}\\
+ \therefore \vec{n}=\myvec{8-0 \\ -(4+16) \\ 0+16}
+\implies \vec{n_2}=\myvec{8 \\ -20 \\ 16}\\
+\therefore \vec{c_1}= \myvec{2\\-5\\1}+\frac{\myvec{5&-1&-1} \myvec{8\\-20\\16}}{\myvec{3&2&6} \myvec{8\\-20\\16}}\myvec{3\\2\\6}\\
+\implies \vec{c_1}=\myvec{3.65\\-3.9\\4.3}
 \end{align}
-Similarly, the point on Line2 nearest to Line 1 is $c_2$ given by:\\
+Similarly, the point on Line2 nearest to Line 1 is $\vec{c_2}$ given by:\\
 \begin{align}
-c_2=p_2+\frac{(p_1-p_2)\cdot n_1}{d_2\cdot n_1}d_2 \\
-where, n_1=d_1\times n\\
- \therefore n_1=\begin{vmatrix}i & j & k\\3 &2 &6\\-8&0&4\end{vmatrix}
-\implies n_1=\myvec{8 \\ -60 \\ 16}
+\vec{c_2}=\vec{p_2}+\frac{(\vec{p_1}-\vec{p_2})^T \vec{n_1}}{\vec{d_2}^T \vec{n_1}}\vec{d_2} \\
+where, \vec{n_1}=\vec{d_1}\times n\\
+ \therefore \vec{n}=\myvec{8-0 \\ -(12+48) \\ 0+16}
+\implies \vec{n_1}=\myvec{8 \\ -60 \\ 16}
 \end{align}
 \begin{align}
-\therefore c_2= \myvec{7\\-6\\0}+\frac{\myvec{-5\\1\\1}\cdot \myvec{8\\-60\\16}}{\myvec{1\\2\\2}\cdot \myvec{8\\-60\\16}}\myvec{1\\2\\2}\\
-\implies c_2=\myvec{8.05\\-3.9\\2.1}
+\therefore \vec{c_2}= \myvec{7\\-6\\0}+\frac{\myvec{-5&1&1} \myvec{8\\-60\\16}}{\myvec{1&2&2} \myvec{8\\-60\\16}}\myvec{1\\2\\2}\\
+\implies \vec{c_2}=\myvec{8.05\\-3.9\\2.1}
 \end{align}
 \\
-The minimum distance can be found using points $c_1$ and $c_2$ as \textbf{4.92} units.
+The minimum distance can be found using points $\vec{c_1}$ and $\vec{c_2}$ as \textbf{4.92} units.
 \begin{figure}[ht]
 \centering
 \includegraphics[width=10cm, height=8cm]{Figure_1}
@@ -276,40 +276,40 @@ Hence, the equations are inconsistent, which proves that the two lines do not in
 \\
 The given equations are in the form:
 \begin{align}
-    \textbf{x}=p_1 + \lambda_1d_1\\
-    \textbf{x}=p_2 + \lambda_2d_2
+    \textbf{x}=\vec{p_1} + \lambda_1\vec{d_1}\\
+    \textbf{x}=\vec{p_2} + \lambda_2\vec{d_2}
 \end{align}
-Where, $p_1$ and $p_2$ are points on line1 and line2 respectively. Also, $d_1$ and $d_2$ are the direction vectors of respective lines.
-The cross product of $d_1$ and $d_2$ is perpendicular to both lines.
+Where, $\vec{p_1}$ and $\vec{p_2}$ are points on line1 and line2 respectively. Also, $\vec{d_1}$ and $\vec{d_2}$ are the direction vectors of respective lines.
+The cross product of $\vec{d_1}$ and $\vec{d_2}$ is perpendicular to both lines.
 \begin{align}
-    \vec{n} = d_1 \times d_2\\
-     n=\begin{vmatrix}i & j & k\\1 &-1 &-2\\3&-5&-4\end{vmatrix}
-     \implies n=\myvec{-6 \\ -2 \\ -2 }
+    \vec{n} = \vec{d_1} \times \vec{d_2}\\
+    \vec{n}=\myvec{4-10 \\ -(-4+6) \\ -5+3}
+     \implies \vec{n}=\myvec{-6 \\ -2 \\ -2 }
 \end{align}
 \\
-When the line2 is translated along the vector \vec{n}, it forms a plane. This plane intersects line1 at a single point $c_1$ which is nearest to the line2. Point $c_1$ is given by:
+When the line2 is translated along the vector \vec{n}, it forms a plane. This plane intersects line1 at a single point $\vec{c_1}$ which is nearest to the line2. Point $\vec{c_1}$ is given by:
 \\
 \begin{align}
-c_1=p_1+\frac{(p_2-p_1)\cdot n_2}{d_1\cdot n_2}d_1 \\
-where, n_2=d_2\times n\\
- \therefore n_2=\begin{vmatrix}i & j & k\\3 &-5 &-4\\-6&-2&-2\end{vmatrix}
-\implies n_2=\myvec{2 \\ 30 \\ -36}\\
-\therefore c_1= \myvec{3\\-1\\-2}+\frac{\myvec{-1\\-2\\-54}\cdot \myvec{2\\30\\-36}}{\myvec{1\\-1\\-2}\cdot \myvec{2\\30\\-36}}\myvec{1\\-1\\-2}\\
-\implies c_1=\myvec{45.77 \\ -41.77\\ -87.54}
+\vec{c_1}=\vec{p_1}+\frac{(\vec{p_2}-\vec{p_1})^T \vec{n_2}}{\vec{d_1}^T \vec{n_2}}\vec{d_1} \\
+where, \vec{n_2}=\vec{d_2}\times \vec{n}\\
+ \therefore \vec{n_2}=\myvec{10-8 \\ -(-6-24) \\ -6-30}
+\implies \vec{n_2}=\myvec{2 \\ 30 \\ -36}\\
+\vec{c_1}= \myvec{3\\-1\\-2}+\frac{\myvec{-1&-2&-54} \myvec{2\\30\\-36}}{\myvec{1&-1&-2} \myvec{2\\30\\-36}}\myvec{1\\-1\\-2}\\
+\implies \vec{c_1}=\myvec{45.77 \\ -41.77\\ -87.54}
 \end{align}
-Similarly, the point on Line2 nearest to Line 1 is $c_2$ given by:\\
+Similarly, the point on Line2 nearest to Line 1 is $\vec{c_2}$ given by:\\
 \begin{align}
-c_2=p_2+\frac{(p_1-p_2)\cdot n_1}{d_2\cdot n_1}d_2 \\
-where, n_1=d_1\times n\\
- \therefore n_1=\begin{vmatrix}i & j & k\\1 &-1 &-2\\-6&-2&-2\end{vmatrix}
-\implies n_1=\myvec{-2 \\ 14 \\ -8}
+\vec{c_2}=\vec{p_2}+\frac{(\vec{p_1}-\vec{p_2})^T \vec{n_1}}{\vec{d_2}^T \vec{n_1}}\vec{d_2} \\
+where, \vec{n_1}=\vec{d_1}\times \vec{n}\\
+ \therefore \vec{n_1}=\myvec{2-4 \\ -(-2-12) \\ -2-6}
+\implies \vec{n_1}=\myvec{-2 \\ 14 \\ -8}
 \end{align}
 \begin{align}
-\therefore c_2= \myvec{2\\-1\\-56}+\frac{\myvec{5\\-1\\-1}\cdot \myvec{-2\\14\\-8}}{\myvec{3\\-5\\-4}\cdot \myvec{-2\\14\\-8}}\myvec{3\\-5\\-4}\\
-\implies c_2=\myvec{29.69\\ -47.15\\ -92.92}
+\therefore \vec{c_2}= \myvec{2\\-1\\-56}+\frac{\myvec{5&-1&-1} \myvec{-2\\14\\-8}}{\myvec{3&-5&-4} \myvec{-2\\14\\-8}}\myvec{3\\-5\\-4}\\
+\implies \vec{c_2}=\myvec{29.69\\ -47.15\\ -92.92}
 \end{align}
 \\
-The minimum distance can be found using points $c_1$ and $c_2$ as \textbf{17.79} units.
+The minimum distance can be found using points $\vec{c_1}$ and $\vec{c_2}$ as \textbf{17.79} units.
 \newpage
 \begin{figure}[h!]
 \centering
