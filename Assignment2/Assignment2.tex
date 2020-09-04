@@ -208,72 +208,52 @@ Thus, the angle $\theta$ between two vectors is given by
 \end{align} 
 Here, Rank(A) $\neq$ Rank(A$\mid$B). Hence, these three equations are inconsistent, which proves that the two lines do not intersect in the 3D plane. (Where A is the coefficient matrix and A$\mid$B is the augmented matrix.) \\
 \\
-\textbf{Finding the closest points on the lines and minimum distance (Problem 1) :}\\
-The closest points (A and B) on skew lines are the points which form a vector such that the vector is perpendicular to both the lines as shown in Fig.\ref{Fig1}.
+\textbf{Finding the closest points on the lines and minimum distance (Problem 1) :}
 \\
-\begin{figure}[h!]
-\centering
-\includegraphics[width=8cm, height=5cm]{Figure_3}
-\caption{Condition for closest points}
-\label{Fig1}
-\end{figure}
-\\
-From the given equations, Points A and B are:
-\\
+The given equations are in the form:
 \begin{align}
-   Point-A = \myvec{2+3\lambda_1 \\ -5+2\lambda_1 \\ 1+6\lambda_1} \label{15} \\ 
-   Point-B= \myvec{7+\lambda_2 \\ -6+2\lambda_2 \\ 2\lambda_2} \label{16} 
+    \textbf{x}=p_1 + \lambda_1d_1\\
+    \textbf{x}=p_2 + \lambda_2d_2
+\end{align}
+Where, $p_1$ and $p_2$ are points on line1 and line2 respectively. Also, $d_1$ and $d_2$ are the direction vectors of respective lines.
+The cross product of $d_1$ and $d_2$ is perpendicular to both lines.
+\begin{align}
+    \vec{n} = d_1 \times d_2\\
+     n=\begin{vmatrix}i & j & k\\3 &2 &6\\1&2&2\end{vmatrix}
+     \implies n=\myvec{-8 \\ 0 \\ 4}
 \end{align}
 \\
-Thus, The vector \vec{AB} is given by,
+When the line2 is translated along the vector \vec{n}, it forms a plane. This plane intersects line1 at a single point $c_1$ which is nearest to the line2. Point $c_1$ is given by:
+\\
 \begin{align}
-   \vec{AB}= \myvec{5-3\lambda_1+\lambda_2 \\ -1-2\lambda_1+2\lambda_2\\ -1-6\lambda_1+2\lambda_2}
+c_1=p_1+\frac{(p_2-p_1)\cdot n_2}{d_1\cdot n_2}d_1 \\
+where, n_2=d_2\times n\\
+ \therefore n_2=\begin{vmatrix}i & j & k\\1 &2 &2\\-8&0&4\end{vmatrix}
+\implies n_2=\myvec{8 \\ -20 \\ 16}\\
+\therefore c_1= \myvec{2\\-5\\1}+\frac{\myvec{5\\-1\\-1}\cdot \myvec{8\\-20\\16}}{\myvec{3\\2\\6}\cdot \myvec{8\\-20\\16}}\myvec{3\\2\\6}\\
+\implies c_1=\myvec{3.65\\-3.9\\4.3}
+\end{align}
+Similarly, the point on Line2 nearest to Line 1 is $c_2$ given by:\\
+\begin{align}
+c_2=p_2+\frac{(p_1-p_2)\cdot n_1}{d_2\cdot n_1}d_2 \\
+where, n_1=d_1\times n\\
+ \therefore n_1=\begin{vmatrix}i & j & k\\3 &2 &6\\-8&0&4\end{vmatrix}
+\implies n_1=\myvec{8 \\ -60 \\ 16}
+\end{align}
+\begin{align}
+\therefore c_2= \myvec{7\\-6\\0}+\frac{\myvec{-5\\1\\1}\cdot \myvec{8\\-60\\16}}{\myvec{1\\2\\2}\cdot \myvec{8\\-60\\16}}\myvec{1\\2\\2}\\
+\implies c_2=\myvec{8.05\\-3.9\\2.1}
 \end{align}
 \\
-Since, vector \vec{AB} is perpendicular to both lines, the dot product of vector \vec{AB} with the respective directional vectors should be zero. \\
-\\
-Performing the dot product for line-1 and equating to 0, we get:
-\begin{align}
-\myvec{3 & 2 & 6}
-\myvec{5-3\lambda_1+\lambda_2 \\ -1-2\lambda_1+2\lambda_2\\ -1-6\lambda_1+2\lambda_2} = 0 \\
-\implies \myvec{-49 & 19}\myvec{\lambda_1 \\ \lambda_2}=-7 \label{19}
-\end{align}
-\newpage \noindent
-Performing the dot product for line-2 and equating to 0, we get:
-\begin{align}
-\myvec{1 & 2 & 2}
-\myvec{5-3\lambda_1+\lambda_2 \\ -1-2\lambda_1+2\lambda_2\\ -1-6\lambda_1+2\lambda_2} = 0 \\
-\implies \myvec{-19 & 9}\myvec{\lambda_1 \\ \lambda_2}=-1 \label{21}
-\end{align}
-Writing equations \ref{19} and \ref{21} in augmented matrix form and reducing the rows :\\
-\begin{align}
-\myvec{-49 & 19 & -7\\-19 & 9 & -1}\\
-\xleftrightarrow[]{R_1\leftarrow R_1\times-1/49}
-\myvec{1 & -19/49 & 1/7\\-19 & 9 & -1}\\
-\xleftrightarrow[]{R_2\leftarrow R_2+19R_1}
-\myvec{1 & -19/49 & 1/7\\0 & 80/49 & 12/7}\\
-\xleftrightarrow[]{R_2\leftarrow \frac{49}{80}\times R_2}
-\myvec{1 & -19/49 & 1/7\\0 & 1 & 21/20}\\
-\xleftrightarrow[]{R_1\leftarrow R_1+\frac{19}{49}\times R_2}
-\myvec{1 & 0 & 11/20\\0 & 1 & 21/20}
-\end{align}
-\\
-Thus, $\lambda_1$=11/20 and $\lambda_2$=21/20. Substituting values of $\lambda_1$ and $\lambda_2$ in equations \ref{15} and \ref{16}, we get the closest points as :\\
-\begin{align}
- Point-A = \myvec{3.65 \\ -3.9\\ 4.3}\\ 
-   Point-B= \myvec{8.05\\ -3.9\\ 2.1} 
-\end{align} 
-The minimum distance calculated from these two points is \textbf{4.92} units.
-
-\newpage
-\begin{figure}[h!]
+The minimum distance can be found using points $c_1$ and $c_2$ as \textbf{4.92} units.
+\begin{figure}[ht]
 \centering
 \includegraphics[width=10cm, height=8cm]{Figure_1}
 \caption{Problem 1 : Lines crossing each other, but not intersecting}
 \label{Fig2}
 \end{figure}
-\\
-The proof that the pair of lines do not intersect in Problem 1 is as follows:\\
+\newpage
+The proof that the pair of lines do not intersect in Problem 2 is as follows:\\
 \\
 \textbf{Problem 2 :} Equating the x, y and z components of both lines and forming equation in the augmented matrix forms. The Matrix is row reduced as follows:\\
 \begin{align}
@@ -290,63 +270,46 @@ The proof that the pair of lines do not intersect in Problem 1 is as follows:\\
 Here, Rank(A) $\neq$ Rank(A$\mid$B).
 \\
 Hence, the equations are inconsistent, which proves that the two lines do not intersect in the 3D plane. (Where A is the coefficient matrix and A$\mid$B is the augmented matrix.) \\
-\newpage \noindent
+\\
+\noindent
 \textbf{Finding the closest points on the lines and minimum distance (Problem 2) :}\\
-The closest points (A and B) on skew lines are the points which form a vector such that the vector is perpendicular to both the lines as shown in Fig.\ref{Fig3}.
 \\
-\begin{figure}[h!]
-\centering
-\includegraphics[width=8cm, height=5cm]{Figure_3}
-\caption{Condition for closest points}
-\label{Fig3}
-\end{figure}
-\\
-From the given equations, Points A and B are:
-\\
+The given equations are in the form:
 \begin{align}
-   Point-A = \myvec{3+\lambda_1 \\ 1-\lambda_1 \\ -2-2\lambda_1} \label{34} \\ 
-   Point-B= \myvec{2+3\lambda_2 \\ -1-5\lambda_2 \\ -56-4\lambda_2} \label{35} 
+    \textbf{x}=p_1 + \lambda_1d_1\\
+    \textbf{x}=p_2 + \lambda_2d_2
+\end{align}
+Where, $p_1$ and $p_2$ are points on line1 and line2 respectively. Also, $d_1$ and $d_2$ are the direction vectors of respective lines.
+The cross product of $d_1$ and $d_2$ is perpendicular to both lines.
+\begin{align}
+    \vec{n} = d_1 \times d_2\\
+     n=\begin{vmatrix}i & j & k\\1 &-1 &-2\\3&-5&-4\end{vmatrix}
+     \implies n=\myvec{-6 \\ -2 \\ -2 }
 \end{align}
 \\
-Thus, The vector \vec{AB} is given by,
+When the line2 is translated along the vector \vec{n}, it forms a plane. This plane intersects line1 at a single point $c_1$ which is nearest to the line2. Point $c_1$ is given by:
+\\
 \begin{align}
-   \vec{AB}= \myvec{-1-\lambda_1+3\lambda_2 \\ -2+\lambda_1-5\lambda_2\\ -54+2\lambda_1-4\lambda_2}
+c_1=p_1+\frac{(p_2-p_1)\cdot n_2}{d_1\cdot n_2}d_1 \\
+where, n_2=d_2\times n\\
+ \therefore n_2=\begin{vmatrix}i & j & k\\3 &-5 &-4\\-6&-2&-2\end{vmatrix}
+\implies n_2=\myvec{2 \\ 30 \\ -36}\\
+\therefore c_1= \myvec{3\\-1\\-2}+\frac{\myvec{-1\\-2\\-54}\cdot \myvec{2\\30\\-36}}{\myvec{1\\-1\\-2}\cdot \myvec{2\\30\\-36}}\myvec{1\\-1\\-2}\\
+\implies c_1=\myvec{45.77 \\ -41.77\\ -87.54}
+\end{align}
+Similarly, the point on Line2 nearest to Line 1 is $c_2$ given by:\\
+\begin{align}
+c_2=p_2+\frac{(p_1-p_2)\cdot n_1}{d_2\cdot n_1}d_2 \\
+where, n_1=d_1\times n\\
+ \therefore n_1=\begin{vmatrix}i & j & k\\1 &-1 &-2\\-6&-2&-2\end{vmatrix}
+\implies n_1=\myvec{-2 \\ 14 \\ -8}
+\end{align}
+\begin{align}
+\therefore c_2= \myvec{2\\-1\\-56}+\frac{\myvec{5\\-1\\-1}\cdot \myvec{-2\\14\\-8}}{\myvec{3\\-5\\-4}\cdot \myvec{-2\\14\\-8}}\myvec{3\\-5\\-4}\\
+\implies c_2=\myvec{29.69\\ -47.15\\ -92.92}
 \end{align}
 \\
-Since, vector \vec{AB} is perpendicular to both lines, the dot product of vector \vec{AB} with the respective directional vectors should be zero. \\
-\\
-Performing the dot product for line-1 and equating to 0, we get:
-\begin{align}
-\myvec{1 & -1 & -2}
-\myvec{-1-\lambda_1+3\lambda_2 \\ -2+\lambda_1-5\lambda_2\\ -54+2\lambda_1-4\lambda_2}=0\\
-\implies \myvec{-6 & 16}\myvec{\lambda_1 \\ \lambda_2}=-109 \label{38}
-\end{align}
-\newpage \noindent
-Performing the dot product for line-2 and equating to 0, we get:
-\begin{align}
-\myvec{3 & -5 & -4}
-\myvec{-1-\lambda_1+3\lambda_2 \\ -2+\lambda_1-5\lambda_2\\ -54+2\lambda_1-4\lambda_2}=0 \\
-\implies \myvec{-16 & 50}\myvec{\lambda_1 \\ \lambda_2}=-223 \label{40}
-\end{align}
-Writing equations \ref{38} and \ref{40} in augmented matrix form and reducing the rows :\\
-\begin{align}
-\myvec{-6 & 16 & -109\\-16 & 50 & -223}\\
-\xleftrightarrow[]{R_1\leftarrow R_1\times-1/6}
-\myvec{1 & -8/3 & 109/6\\-16 & 50 & -223}\\
-\xleftrightarrow[]{R_2\leftarrow R_2+16R_1}
-\myvec{1 & -8/3 & 109/6\\0 & 22/3 & 203/3}\\
-\xleftrightarrow[]{R_2\leftarrow \frac{3}{22}\times R_2}
-\myvec{1 & -8/3 & 109/6\\0 & 1 & 203/22}\\
-\xleftrightarrow[]{R_1\leftarrow R_1+\frac{8}{3}\times R_2}
-\myvec{1 & 0 & 941/22\\0 & 1 & 203/22}
-\end{align}
-\\
-Thus, $\lambda_1$=42.77 and $\lambda_2$=9.23. Substituting values of $\lambda_1$ and $\lambda_2$ in equations \ref{34} and \ref{35}, we get the closest points as :\\
-\begin{align}
- Point-A = \myvec{45.77 \\ -41.77\\ -87.54}\\ 
-   Point-B= \myvec{29.69\\ -47.15\\ -92.92} 
-\end{align} 
-The minimum distance calculated from these two points is \textbf{17.79} units.
+The minimum distance can be found using points $c_1$ and $c_2$ as \textbf{17.79} units.
 \newpage
 \begin{figure}[h!]
 \centering
