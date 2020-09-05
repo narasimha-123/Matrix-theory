@@ -38,7 +38,7 @@ ax = fig.add_subplot(111,projection='3d')
 #Points on the plane
 A = np.array([5,-3,7]).reshape((3,1))
 B = np.array([2,-5,1]).reshape((3,1))
-C = np.array([8,-4,2]).reshape((3,1))
+C = np.array([9,-2,4]).reshape((3,1))
 D = np.array([7,-6,0]).reshape((3,1))
 
 
@@ -48,19 +48,15 @@ x_BC = line_gen(C,D)
 
 
 #plotting line
-plt.plot(x_AB[0,:],x_AB[1,:],x_AB[2,:],label="AB")
-plt.plot(x_BC[0,:],x_BC[1,:],x_BC[2,:],label="BC")
+plt.plot(x_AB[0,:],x_AB[1,:],x_AB[2,:],label="Line1")
+plt.plot(x_BC[0,:],x_BC[1,:],x_BC[2,:],label="Line2")
 
 #plotting point
-ax.scatter(A[0],A[1],A[2],'o')
-ax.scatter(B[0],B[1],B[2],'o')
-ax.scatter(C[0],C[1],C[2],'o')
-ax.scatter(D[0],D[1],D[2],'o')
+ax.scatter(3.65,-3.9,4.3,'o')
+ax.scatter(8.05,-3.9,2.1,'o')
 
-ax.text(5,-3,7, "A", color='red')
-ax.text(2,-5,1, "B", color='red')
-ax.text(8,-4,2, "C", color='red')
-ax.text(7,-6,0, "D", color='red')
+ax.text(3.65,-3.9,4.3, "c1(3.65,-3.9,4.3)", color='red')
+ax.text(8.05,-3.9,2.1, "c2(8.05,-3.9,2.1)", color='red')
 
 #show plot
 plt.xlabel('$x$');plt.ylabel('$y$')
@@ -75,10 +71,10 @@ ax = fig1.add_subplot(111,projection='3d')
 #ax = fig1.add_subplot(111,projection='3d',aspect='equal')
 
 #Points on the plane
-A1 = np.array([7,-3,-10]).reshape((3,1))
-B1 = np.array([0,4,4]).reshape((3,1))
-C1 = np.array([5,-6,-60]).reshape((3,1))
-D1 = np.array([2,-1,-56]).reshape((3,1))
+A1 = np.array([43,-39,-82]).reshape((3,1))
+B1 = np.array([48,-44,-92]).reshape((3,1))
+C1 = np.array([26,-41,-88]).reshape((3,1))
+D1 = np.array([35,-56,-100]).reshape((3,1))
 
 
 #Generating all lines
@@ -87,19 +83,15 @@ x_BC1 = line_gen(C1,D1)
 
 
 #plotting line
-plt.plot(x_AB1[0,:],x_AB1[1,:],x_AB1[2,:],label="AB")
-plt.plot(x_BC1[0,:],x_BC1[1,:],x_BC1[2,:],label="BC")
+plt.plot(x_AB1[0,:],x_AB1[1,:],x_AB1[2,:],label="Line1")
+plt.plot(x_BC1[0,:],x_BC1[1,:],x_BC1[2,:],label="Line2")
 
 #plotting point
-ax.scatter(A1[0],A1[1],A1[2],'o')
-ax.scatter(B1[0],B1[1],B1[2],'o')
-ax.scatter(C1[0],C1[1],C1[2],'o')
-ax.scatter(D1[0],D1[1],D1[2],'o')
+ax.scatter(45.77,-41.77,-87.54,'o')
+ax.scatter(29.69,-47.15,-92.92,'o')
 
-ax.text(7,-3,-10, "A", color='red')
-ax.text(0,4,4, "B", color='red')
-ax.text(5,-6,-60, "C", color='red')
-ax.text(2,-1,-56, "D", color='red')
+ax.text(45.77,-41.77,-87.54, "c1(45.77,-41.77,-87.54)", color='red')
+ax.text(29.69,-47.15,-92.92, "c2(29.69,-47.15,-92.92)", color='red')
 
 #show plot
 plt.xlabel('$x$');plt.ylabel('$y$')
