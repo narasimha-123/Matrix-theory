@@ -215,6 +215,7 @@ The given equations are in the form:
     \textbf{x}=\vec{p_1} + \lambda_1\vec{d_1}\\
     \textbf{x}=\vec{p_2} + \lambda_2\vec{d_2}
 \end{align}
+\newline
 Where, $\vec{p_1}$ and $\vec{p_2}$ are points on line1 and line2 respectively. Also, $\vec{d_1}$ and $\vec{d_2}$ are the direction vectors of respective lines.
 The cross product of $\vec{d_1}$ and $\vec{d_2}$ is perpendicular to both lines.
 \begin{align}
@@ -231,6 +232,7 @@ where, \vec{n_2}=\vec{d_2}\times \vec{n}\\
  \therefore \vec{n}=\myvec{8-0 \\ -(4+16) \\ 0+16}
 \implies \vec{n_2}=\myvec{8 \\ -20 \\ 16}\\
 \therefore \vec{c_1}= \myvec{2\\-5\\1}+\frac{\myvec{5&-1&-1} \myvec{8\\-20\\16}}{\myvec{3&2&6} \myvec{8\\-20\\16}}\myvec{3\\2\\6}\\
+\therefore \vec{c_1}= \myvec{2\\-5\\1}+\frac{44}{80}\myvec{3\\2\\6}\\
 \implies \vec{c_1}=\myvec{3.65\\-3.9\\4.3}
 \end{align}
 Similarly, the point on Line2 nearest to Line 1 is $\vec{c_2}$ given by:\\
@@ -242,10 +244,15 @@ where, \vec{n_1}=\vec{d_1}\times n\\
 \end{align}
 \begin{align}
 \therefore \vec{c_2}= \myvec{7\\-6\\0}+\frac{\myvec{-5&1&1} \myvec{8\\-60\\16}}{\myvec{1&2&2} \myvec{8\\-60\\16}}\myvec{1\\2\\2}\\
+\therefore \vec{c_2}= \myvec{7\\-6\\0}+\frac{-96}{-80}\myvec{1&2&2}\\
 \implies \vec{c_2}=\myvec{8.05\\-3.9\\2.1}
 \end{align}
 \\
-The minimum distance can be found using points $\vec{c_1}$ and $\vec{c_2}$ as \textbf{4.92} units.
+The minimum distance can be found using points $\vec{c_1}$ and $\vec{c_2}$ as :
+\begin{align}
+    d_{min}=\sqrt{(3.65-8.05)^2+(-3.9+3.9)^2+(4.3-2.1)^2}\\
+    d_{min}=\sqrt{24.2} \ \implies d_{min}=\textbf{4.92} 
+\end{align}
 \begin{figure}[ht]
 \centering
 \includegraphics[width=10cm, height=8cm]{Figure_1}
@@ -295,6 +302,7 @@ where, \vec{n_2}=\vec{d_2}\times \vec{n}\\
  \therefore \vec{n_2}=\myvec{10-8 \\ -(-6-24) \\ -6-30}
 \implies \vec{n_2}=\myvec{2 \\ 30 \\ -36}\\
 \vec{c_1}= \myvec{3\\-1\\-2}+\frac{\myvec{-1&-2&-54} \myvec{2\\30\\-36}}{\myvec{1&-1&-2} \myvec{2\\30\\-36}}\myvec{1\\-1\\-2}\\
+\vec{c_1}= \myvec{3\\-1\\-2}+\frac{1882}{44}\myvec{1\\-1\\-2}\\
 \implies \vec{c_1}=\myvec{45.77 \\ -41.77\\ -87.54}
 \end{align}
 Similarly, the point on Line2 nearest to Line 1 is $\vec{c_2}$ given by:\\
@@ -306,11 +314,15 @@ where, \vec{n_1}=\vec{d_1}\times \vec{n}\\
 \end{align}
 \begin{align}
 \therefore \vec{c_2}= \myvec{2\\-1\\-56}+\frac{\myvec{5&-1&-1} \myvec{-2\\14\\-8}}{\myvec{3&-5&-4} \myvec{-2\\14\\-8}}\myvec{3\\-5\\-4}\\
+\therefore \vec{c_2}= \myvec{2\\-1\\-56}+\frac{-16}{-44}\myvec{3\\-5\\-4}\\
 \implies \vec{c_2}=\myvec{29.69\\ -47.15\\ -92.92}
 \end{align}
 \\
-The minimum distance can be found using points $\vec{c_1}$ and $\vec{c_2}$ as \textbf{17.79} units.
-\newpage
+The minimum distance can be found using points $\vec{c_1}$ and $\vec{c_2}$ as:
+\begin{align}
+    d_{min}=\sqrt{(16.08)^2+(5.38)^2+(5.38)^2}\\
+    d_{min}=\sqrt{316.8} \ \implies d_{min}=\textbf{17.79} 
+\end{align}
 \begin{figure}[h!]
 \centering
 \includegraphics[width=10cm, height=8cm]{Figure_2}
