@@ -111,7 +111,6 @@ columns=fullflexible
 \providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
 \newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
 \newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
-
 \numberwithin{equation}{subsection}
 
 \makeatletter
@@ -217,34 +216,97 @@ The given equations are in the form:
 \end{align}
 \newline
 Where, $\vec{p_1}$ and $\vec{p_2}$ are points on line1 and line2 respectively. Also, $\vec{d_1}$ and $\vec{d_2}$ are the direction vectors of respective lines.
-The cross product of $\vec{d_1}$ and $\vec{d_2}$ is perpendicular to both lines.
+
+The vector $\vec{n}$ is perpendicular to both lines. Thus, the dot product of the respective directional vectors and  $\vec{n}$ is zero:
 \begin{align}
-    \vec{n} = \vec{d_1} \times \vec{d_2}\\
-     \vec{n}=\myvec{4-8 \\ -(6-6) \\ 6-2}
-     \implies \vec{n}=\myvec{-8 \\ 0 \\ 4}
+    \vec{d_1}^T\vec{n} =  0\\
+    \vec{d_2}^T\vec{n} =  0\\
+    \myvec{3&2&6}\myvec{n_1\\n_2\\n_3}=0\\
+    \myvec{1&2&2}\myvec{n_1\\n_2\\n_3}=0
+\end{align}
+Forming augmented matrix and reducing the rows:
+\begin{align}
+\myvec{3 & 2 & 6 & 0\\1 & 2 & 2 & 0}\\
+\xleftrightarrow[]{R_1\leftarrow 1/3\times R_1}
+\myvec{1 & 2/3 & 2 & 0\\1 & 2 & 2 & 0}\\
+\xleftrightarrow[]{R_2\leftarrow R_2-R1}
+\myvec{1 & 2/3 & 2 & 0\\0 & 4/3 & 0 & 0}\\
+\xleftrightarrow[]{R_2\leftarrow 3/4 \times R_2}
+\myvec{1 & 2/3 & 2 & 0\\0 & 1 & 0 & 0}\\
+\xleftrightarrow[]{R_1\leftarrow R_1-2/3\times R_2}
+\myvec{1 & 0 & 2 & 0\\0 & 1 & 0 & 0}
+\end{align} 
+Here, Rank(A) = Rank(A$\mid$B). Hence, the system is consistent. 
+\\
+Also, Rank(A) $<$ number of unknowns, Thus we have infinite number of solutions. let $n_3$=1, which makes $n_1$=-2 and $n_2$=0:
+\begin{align}
+    \therefore \vec{n}=\myvec{-2 \\ 0 \\ 1 }
 \end{align}
 \\
 When the line2 is translated along the vector \vec{n}, it forms a plane. This plane intersects line1 at a single point $\vec{c_1}$ which is nearest to the line2. Point $\vec{c_1}$ is given by:
 \\
 \begin{align}
-\vec{c_1}=\vec{p_1}+\frac{(\vec{p_2}-\vec{p_1})^T \vec{n_2}}{\vec{d_1}^T \vec{n_2}}\vec{d_1} \\
-where, \vec{n_2}=\vec{d_2}\times \vec{n}\\
- \therefore \vec{n}=\myvec{8-0 \\ -(4+16) \\ 0+16}
-\implies \vec{n_2}=\myvec{8 \\ -20 \\ 16}\\
-\therefore \vec{c_1}= \myvec{2\\-5\\1}+\frac{\myvec{5&-1&-1} \myvec{8\\-20\\16}}{\myvec{3&2&6} \myvec{8\\-20\\16}}\myvec{3\\2\\6}\\
-\therefore \vec{c_1}= \myvec{2\\-5\\1}+\frac{44}{80}\myvec{3\\2\\6}\\
+\vec{c_1}=\vec{p_1}+\frac{(\vec{p_2}-\vec{p_1})^T \vec{n_2}}{\vec{d_1}^T \vec{n_2}}\vec{d_1} 
+\end{align}
+Here, $\Vec{n_2}$ is perpendicular to both vector $\Vec{d_2}$ and $\Vec{n}$. Thus, the dot product of the $\Vec{n_2}$ with $\Vec{d_2}$ and $\Vec{n}$ is zero:
+\begin{align}
+    \vec{d_2}^T\vec{n_2} =  0\\
+    \vec{n}^T\vec{n_2} =  0\\
+    \myvec{1&2&2}\vec{n_2}=0\\
+    \myvec{-2&0&1}\vec{n_2}=0
+\end{align}
+Forming augmented matrix and reducing the rows:
+\begin{align}
+\myvec{1 & 2 & 2 & 0\\-2 & 0 & 1 & 0}\\
+\xleftrightarrow[]{R_2\leftarrow R_2+2R_1}
+\myvec{1 & 2 & 2 & 0\\0 & 4 & 5 & 0}\\
+\xleftrightarrow[]{R_2\leftarrow R_2/4}
+\myvec{1 & 2 & 2 & 0\\0 & 1 & 5/4 & 0}\\
+\xleftrightarrow[]{R_1\leftarrow R_1-2R_2}
+\myvec{1 & 0 & -1/2 & 0\\0 & 1 & 5/4 & 0}
+\end{align} 
+Here, Rank(A) = Rank(A$\mid$B). Hence, the system is consistent. 
+\\
+Also, Rank(A) $<$ number of unknowns, Thus we have infinite number of solutions. let $n_1$=2, which makes $n_3$=4 and $n_2$=-5:
+\begin{align}
+    \therefore \vec{n_2}=\myvec{2 \\ -5 \\ 4 }\\
+\therefore \vec{c_1}= \myvec{2\\-5\\1}+\frac{\myvec{5&-1&-1} \myvec{2\\-5\\4}}{\myvec{3&2&6} \myvec{2\\-5\\4}}\myvec{3\\2\\6}\\
+\therefore \vec{c_1}= \myvec{2\\-5\\1}+\frac{11}{20}\myvec{3\\2\\6}\\
 \implies \vec{c_1}=\myvec{3.65\\-3.9\\4.3}
 \end{align}
+\newpage \noindent
 Similarly, the point on Line2 nearest to Line 1 is $\vec{c_2}$ given by:\\
 \begin{align}
 \vec{c_2}=\vec{p_2}+\frac{(\vec{p_1}-\vec{p_2})^T \vec{n_1}}{\vec{d_2}^T \vec{n_1}}\vec{d_2} \\
-where, \vec{n_1}=\vec{d_1}\times n\\
- \therefore \vec{n}=\myvec{8-0 \\ -(12+48) \\ 0+16}
-\implies \vec{n_1}=\myvec{8 \\ -60 \\ 16}
+\end{align}
+Here, $\Vec{n_1}$ is perpendicular to both vector $\Vec{d_1}$ and $\Vec{n}$. Thus, the dot product of the $\Vec{n_1}$ with $\Vec{d_1}$ and $\Vec{n}$ is zero:
+\begin{align}
+    \vec{d_1}^T\vec{n_1} =  0\\
+    \vec{n}^T\vec{n_1} =  0\\
+    \myvec{3&2&6}\vec{n_2}=0\\
+    \myvec{-2&0&1}\vec{n_2}=0
+\end{align}
+Forming augmented matrix and reducing the rows:
+\begin{align}
+\myvec{3 & 2& 6 & 0\\-2 & 0 & 1 & 0}\\
+\xleftrightarrow[]{R_1\leftarrow R_1\times1/3}
+\myvec{1 & 2/3& 2 & 0\\-2 & 0 & 1 & 0}\\
+\xleftrightarrow[]{R_2\leftarrow R_2+2R_1}
+\myvec{1 & 2/3& 2 & 0\\0 & 4/3 & 5 & 0}\\
+\xleftrightarrow[]{R_2\leftarrow R_2\times 3/4}
+\myvec{1 & 2/3& 2 & 0\\0 & 1 & 15/4 & 0}\\
+\xleftrightarrow[]{R_1\leftarrow R_1-2/3\times R_2}
+\myvec{1 & 0& -1/2 & 0\\0 & 1 & 15/4 & 0}\\
+\end{align} 
+Here, Rank(A) = Rank(A$\mid$B). Hence, the system is consistent. 
+\\
+Also, Rank(A) $<$ number of unknowns, Thus we have infinite number of solutions. let $n_1$=2, which makes $n_3$=4 and $n_1$=-15:
+\begin{align}
+\therefore \vec{n_1}=\myvec{2 \\ -15 \\ 4 }\\
+\therefore \vec{c_2}= \myvec{7\\-6\\0}+\frac{\myvec{-5&1&1} \myvec{2\\-15\\4}}{\myvec{1&2&2} \myvec{2\\-15\\4}}\myvec{1\\2\\2}
 \end{align}
 \begin{align}
-\therefore \vec{c_2}= \myvec{7\\-6\\0}+\frac{\myvec{-5&1&1} \myvec{8\\-60\\16}}{\myvec{1&2&2} \myvec{8\\-60\\16}}\myvec{1\\2\\2}\\
-\therefore \vec{c_2}= \myvec{7\\-6\\0}+\frac{-96}{-80}\myvec{1&2&2}\\
+\therefore \vec{c_2}= \myvec{7\\-6\\0}+\frac{21}{20}\myvec{1&2&2}\\
 \implies \vec{c_2}=\myvec{8.05\\-3.9\\2.1}
 \end{align}
 \\
@@ -259,7 +321,7 @@ The minimum distance can be found using points $\vec{c_1}$ and $\vec{c_2}$ as :
 \caption{Problem 1 : Lines crossing each other, but not intersecting}
 \label{Fig2}
 \end{figure}
-\newpage
+\newpage \noindent
 The proof that the pair of lines do not intersect in Problem 2 is as follows:\\
 \\
 \textbf{Problem 2 :} Equating the x, y and z components of both lines and forming equation in the augmented matrix forms. The Matrix is row reduced as follows:\\
@@ -287,34 +349,96 @@ The given equations are in the form:
     \textbf{x}=\vec{p_2} + \lambda_2\vec{d_2}
 \end{align}
 Where, $\vec{p_1}$ and $\vec{p_2}$ are points on line1 and line2 respectively. Also, $\vec{d_1}$ and $\vec{d_2}$ are the direction vectors of respective lines.
-The cross product of $\vec{d_1}$ and $\vec{d_2}$ is perpendicular to both lines.
+\\
+The vector $\vec{n}$ is perpendicular to both lines. Thus, the dot product of the respective directional vectors and n is zero:
 \begin{align}
-    \vec{n} = \vec{d_1} \times \vec{d_2}\\
-    \vec{n}=\myvec{4-10 \\ -(-4+6) \\ -5+3}
-     \implies \vec{n}=\myvec{-6 \\ -2 \\ -2 }
+    \vec{d_1}^T\vec{n} =  0\\
+    \vec{d_2}^T\vec{n} =  0
+\end{align}
+\begin{align}
+    \myvec{1&-1&-2}\myvec{n_1\\n_2\\n_3}=0\\
+    \myvec{3&-5&-4}\myvec{n_1\\n_2\\n_3}=0
+\end{align}
+Forming augmented matrix and reducing the rows:
+\begin{align}
+\myvec{1 & -1 & -2 & 0\\3 & -5 & -4 & 0}\\
+\xleftrightarrow[]{R_2\leftarrow R_2-3R_1}
+\myvec{1 & -1 & -2 & 0\\0 & -2 & 2 & 0}\\
+\xleftrightarrow[]{R_2\leftarrow R_2\times-1/2}
+\myvec{1 & -1 & -2 & 0\\0 & 1 & -1 & 0}\\
+\xleftrightarrow[]{R_1\leftarrow R_1+R_2}
+\myvec{1 & 0 & -3 & 0\\0 & 1 & -1 & 0}
+\end{align} 
+Here, Rank(A) = Rank(A$\mid$B). Hence, the system is consistent. 
+\\
+Also, Rank(A) $<$ number of unknowns, Thus we have infinite number of solutions. let $n_2$=1, which makes $n_3$=1 and $n_1$=3:
+\begin{align}
+    \therefore \vec{n}=\myvec{3 \\ 1 \\ 1 }
 \end{align}
 \\
 When the line2 is translated along the vector \vec{n}, it forms a plane. This plane intersects line1 at a single point $\vec{c_1}$ which is nearest to the line2. Point $\vec{c_1}$ is given by:
 \\
 \begin{align}
-\vec{c_1}=\vec{p_1}+\frac{(\vec{p_2}-\vec{p_1})^T \vec{n_2}}{\vec{d_1}^T \vec{n_2}}\vec{d_1} \\
-where, \vec{n_2}=\vec{d_2}\times \vec{n}\\
- \therefore \vec{n_2}=\myvec{10-8 \\ -(-6-24) \\ -6-30}
-\implies \vec{n_2}=\myvec{2 \\ 30 \\ -36}\\
-\vec{c_1}= \myvec{3\\-1\\-2}+\frac{\myvec{-1&-2&-54} \myvec{2\\30\\-36}}{\myvec{1&-1&-2} \myvec{2\\30\\-36}}\myvec{1\\-1\\-2}\\
-\vec{c_1}= \myvec{3\\-1\\-2}+\frac{1882}{44}\myvec{1\\-1\\-2}\\
+\vec{c_1}=\vec{p_1}+\frac{(\vec{p_2}-\vec{p_1})^T \vec{n_2}}{\vec{d_1}^T \vec{n_2}}\vec{d_1} 
+\end{align}
+Here, $\Vec{n_2}$ is perpendicular to both vector $\Vec{d_2}$ and $\Vec{n}$. Thus, the dot product of the $\Vec{n_2}$ with $\Vec{d_2}$ and $\Vec{n}$ is zero:
+\begin{align}
+    \vec{d_2}^T\vec{n_2} =  0\\
+    \vec{n}^T\vec{n_2} =  0\\
+    \myvec{3&-5&-4}\vec{n_2}=0\\
+    \myvec{3&1&1}\vec{n_2}=0
+\end{align}
+Forming augmented matrix and reducing the rows:
+\begin{align}
+\myvec{3 & -5 & -4 & 0\\3 & 1 & 1 & 0}\\
+\xleftrightarrow[]{R_1\leftarrow R_1/3}
+\myvec{1 & -5/3 & -4/3 & 0\\3 & 1 & 1 & 0}\\
+\xleftrightarrow[]{R_2\leftarrow R_2-3R_1}
+\myvec{1 & -5/3 & -4/3 & 0\\0 & 6 & 5 & 0}\\
+\xleftrightarrow[]{R_2\leftarrow R_2/6}
+\myvec{1 & -5/3 & -4/3 & 0\\0 & 1 & 5/6 & 0}\\
+\xleftrightarrow[]{R_1\leftarrow R_1+5/3\timesR_2}
+\myvec{1 & 0 & 1/18 & 0\\0 & 1 & 5/6 & 0}
+\end{align} 
+Here, Rank(A) = Rank(A$\mid$B). Hence, the system is consistent. 
+\\
+Also, Rank(A) $<$ number of unknowns, Thus we have infinite number of solutions. let $n_2$=15, which makes $n_3$=-18 and $n_1$=1:
+\begin{align}
+    \therefore \vec{n_2}=\myvec{1 \\ 15 \\ -18 }\\
+\vec{c_1}= \myvec{3\\-1\\-2}+\frac{\myvec{-1&-2&-54} \myvec{1\\15\\-18}}{\myvec{1&-1&-2} \myvec{1\\15\\-18}}\myvec{1\\-1\\-2}\\
+\vec{c_1}= \myvec{3\\-1\\-2}+\frac{941}{22}\myvec{1\\-1\\-2}\\
 \implies \vec{c_1}=\myvec{45.77 \\ -41.77\\ -87.54}
 \end{align}
+\\
 Similarly, the point on Line2 nearest to Line 1 is $\vec{c_2}$ given by:\\
 \begin{align}
-\vec{c_2}=\vec{p_2}+\frac{(\vec{p_1}-\vec{p_2})^T \vec{n_1}}{\vec{d_2}^T \vec{n_1}}\vec{d_2} \\
-where, \vec{n_1}=\vec{d_1}\times \vec{n}\\
- \therefore \vec{n_1}=\myvec{2-4 \\ -(-2-12) \\ -2-6}
-\implies \vec{n_1}=\myvec{-2 \\ 14 \\ -8}
+\vec{c_2}=\vec{p_2}+\frac{(\vec{p_1}-\vec{p_2})^T \vec{n_1}}{\vec{d_2}^T \vec{n_1}}\vec{d_2} 
 \end{align}
+Here, $\Vec{n_1}$ is perpendicular to both vector $\Vec{d_1}$ and $\Vec{n}$. Thus, the dot product of the $\Vec{n_1}$ with $\Vec{d_1}$ and $\Vec{n}$ is zero:
+\\
 \begin{align}
-\therefore \vec{c_2}= \myvec{2\\-1\\-56}+\frac{\myvec{5&-1&-1} \myvec{-2\\14\\-8}}{\myvec{3&-5&-4} \myvec{-2\\14\\-8}}\myvec{3\\-5\\-4}\\
-\therefore \vec{c_2}= \myvec{2\\-1\\-56}+\frac{-16}{-44}\myvec{3\\-5\\-4}\\
+    \vec{d_1}^T\vec{n_1} =  0\\
+    \vec{n}^T\vec{n_1} =  0\\
+    \myvec{1&-1&-2}\vec{n_2}=0\\
+    \myvec{3&1&1}\vec{n_2}=0
+\end{align}
+Forming augmented matrix and reducing the rows:
+\begin{align}
+\myvec{1 & -1 & -2 & 0\\3 & 1 & 1 & 0}\\
+\xleftrightarrow[]{R_2\leftarrow R_2-3R_1}
+\myvec{1 & -1 & -2 & 0\\0 & 4 & 7 & 0}\\
+\xleftrightarrow[]{R_2\leftarrow R_2\times1/4}
+\myvec{1 & -1 & -2 & 0\\0 & 1 & 7/4 & 0}\\
+\xleftrightarrow[]{R_1\leftarrow R_1+R_2}
+\myvec{1 & 0 & -1/4 & 0\\0 & 1 & 7/4 & 0}
+\end{align} 
+Here, Rank(A) = Rank(A$\mid$B). Hence, the system is consistent. 
+\\
+Also, Rank(A) $<$ number of unknowns, Thus we have infinite number of solutions. let $n_1$=1, which makes $n_3$=4 and $n_1$=-7:
+\begin{align}
+\therefore \vec{n_1}=\myvec{1 \\ -7 \\ 4 }\\
+\therefore \vec{c_2}= \myvec{2\\-1\\-56}+\frac{\myvec{5&-1&-1} \myvec{1\\-7\\4}}{\myvec{3&-5&-4} \myvec{1\\-7\\4}}\myvec{3\\-5\\-4}\\
+\therefore \vec{c_2}= \myvec{2\\-1\\-56}+\frac{8}{22}\myvec{3\\-5\\-4}\\
 \implies \vec{c_2}=\myvec{29.69\\ -47.15\\ -92.92}
 \end{align}
 \\
@@ -323,6 +447,7 @@ The minimum distance can be found using points $\vec{c_1}$ and $\vec{c_2}$ as:
     d_{min}=\sqrt{(16.08)^2+(5.38)^2+(5.38)^2}\\
     d_{min}=\sqrt{316.8} \ \implies d_{min}=\textbf{17.79} 
 \end{align}
+\newpage
 \begin{figure}[h!]
 \centering
 \includegraphics[width=10cm, height=8cm]{Figure_2}
