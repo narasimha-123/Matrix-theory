@@ -165,27 +165,63 @@ L_2: \quad \vec{x} &= \myvec{2\\-1\\-56} + \lambda_2\myvec{3 \\ -5 \\-4}
 \end{enumerate}
 %
 \\
-\solution 
-\begin{enumerate}
-\item The direction vectors of the lines are
-\myvec{3 \\ 2 \\6} and \myvec{1 \\ 2 \\2}. \\
+\textbf{Explanation :}\\
+\\
+\noindent
+The given equations are in the form:
+\begin{align}
+    \textbf{x}=\vec{p_1} + \lambda_1\vec{m_1}\\
+    \textbf{x}=\vec{p_2} + \lambda_2\vec{m_2}
+\end{align}
+\textbf{Finding the angle between the lines :} \\ \\ 
+The angle between the lines can be found by substituting the values of the direction vectors $\vec{m_1}$ and $\vec{m_2}$ in dot product formula:
+\begin{align}
+    \cos \theta &= \frac{\vec{m_1}^T\vec{m_2}}{\norm{\vec{m_1}}\norm{\vec{m_2}}}
+\end{align}
+\textbf{Finding whether the lines intersect or not:}\\ \\
+\textbf{Step 1:} Equate the x, y and z components of both  lines  and  form  equation  in  the  augmented matrix form. \\ \\
+\textbf{Step 2:} Reduce the rows of the matrix to get Row echelon form. \\ \\
+\textbf{Step 3:} If Rank(A) $\neq$ Rank(A$\mid$B), the equations are inconsistent and the lines do not intersect. Else, if there is a unique solution than the point of intersection of two lines is obtained.
+\\
+\\
+\textbf{Finding the closest points between the skew lines:} \\ \\
+\textbf{Step 1:} Find a vector $\Vec{n}$ perpendicular to the directional vectors $\Vec{m_1}$ and $\Vec{m_2}$ using the dot product, forming equations and solving them in matrix form. \\ \\
+\textbf{Step 2:} When line2 is translated along the vector $\Vec{n}$, it forms a plane. This plane intersects line1 at a point $\Vec{c_1}$ which is nearest to line2. This point $\Vec{c_1}$ is given by:
+\begin{align}
+\vec{c_1}=\vec{p_1}+\frac{(\vec{p_2}-\vec{p_1})^T \vec{n_2}}{\vec{m_1}^T \vec{n_2}}\vec{m_1} \label{eqpoint}
+\end{align}
+In above equation, the vector $\Vec{n_2}$ is a vector perpendicular to $\Vec{m_2}$ and $\Vec{n}$. Find vector $\Vec{n_2}$ using the dot product, forming equations and solving them in matrix form. Substitute all the values in equation \ref{eqpoint} and find the point $\Vec{c_1}$. \\ \\
+\textbf{Step 3:} Similarly, the point on line2 nearest to line1 is $\Vec{c_2}$ given by:
+\begin{align}
+\vec{c_2}=\vec{p_2}+\frac{(\vec{p_1}-\vec{p_2})^T \vec{n_1}}{\vec{m_2}^T \vec{n_1}}\vec{m_2} \label{eqpoint2}
+\end{align}
+In above equation, the vector $\Vec{n_1}$ is a vector perpendicular to $\Vec{m_1}$ and $\Vec{n}$. Find vector $\Vec{n_1}$ using the dot product, forming equations and solving them in matrix form. Substitute all the values in equation \ref{eqpoint2} and find the point $\Vec{c_2}$. \\ \\
+The points $\Vec{c_1}$ and  $\Vec{c_2}$ are the closest points between the given skew lines \\ \\
+\textbf{Finding the minimum distance between two skew lines.} \\ \\
+\textbf{Step 1:} Perform the Steps 1 to 3 given for finding the closest points between two skew lines. \\ \\
+\textbf{Step 2:} Using the distance formula, obtain the distance between points $\Vec{c_1}$ and  $\Vec{c_2}$. The obtained distance is the minimum distance between the two skew lines. \\ \\
+\textbf{Solution :} \\
+\textbf{Problem 1:} \\
+The direction vectors of the lines are
+$\vec{m_1}$=\myvec{3 \\ 2 \\6} and $\vec{m_2}$=\myvec{1 \\ 2 \\2}. \\
 Thus, the angle $\theta$ between two vectors is given by 
 %
 \begin{align}
 \label{eq:line_scalar_prod}
-\cos \theta &= \frac{\vec{a}^T\vec{b}}{\norm{\vec{a}}\norm{\vec{b}}}
+\cos \theta &= \frac{\vec{m_1}^T\vec{m_2}}{\norm{\vec{m_1}}\norm{\vec{m_2}}}
 \\
 &=\frac{19}{3\times7}
 \\
 \implies \theta &= 25.21\degree
 \end{align}
-\item The direction vectors of the lines are
-\myvec{1 \\ -1 \\-2} and \myvec{3 \\ -5 \\-4}. \\
+\textbf{Problem 2:} \\
+The direction vectors of the lines are
+$\vec{m_1}$=\myvec{1 \\ -1 \\-2} and $\vec{m_2}$=\myvec{3 \\ -5 \\-4}. \\
 Thus, the angle $\theta$ between two vectors is given by 
 %
 \begin{align}
 \label{eq:line_scalar_prod}
-\cos \theta &= \frac{\vec{a}^T\vec{b}}{\norm{\vec{a}}\norm{\vec{b}}}
+\cos \theta &= \frac{\vec{m_1}^T\vec{m_2}}{\norm{\vec{m_1}}\norm{\vec{m_2}}}
 \\
 &=\frac{16}{\sqrt6\times\sqrt50}
 \\
@@ -211,16 +247,16 @@ Here, Rank(A) $\neq$ Rank(A$\mid$B). Hence, these three equations are inconsiste
 \\
 The given equations are in the form:
 \begin{align}
-    \textbf{x}=\vec{p_1} + \lambda_1\vec{d_1}\\
-    \textbf{x}=\vec{p_2} + \lambda_2\vec{d_2}
+    \textbf{x}=\vec{p_1} + \lambda_1\vec{m_1}\\
+    \textbf{x}=\vec{p_2} + \lambda_2\vec{m_2}
 \end{align}
 \newline
-Where, $\vec{p_1}$ and $\vec{p_2}$ are points on line1 and line2 respectively. Also, $\vec{d_1}$ and $\vec{d_2}$ are the direction vectors of respective lines.
-
+Where, $\vec{p_1}$ and $\vec{p_2}$ are points on line1 and line2 respectively. Also, $\vec{m_1}$ and $\vec{m_2}$ are the direction vectors of respective lines.
+\\ \\
 The vector $\vec{n}$ is perpendicular to both lines. Thus, the dot product of the respective directional vectors and  $\vec{n}$ is zero:
 \begin{align}
-    \vec{d_1}^T\vec{n} =  0\\
-    \vec{d_2}^T\vec{n} =  0\\
+    \vec{m_1}^T\vec{n} =  0\\
+    \vec{m_2}^T\vec{n} =  0\\
     \myvec{3&2&6}\myvec{n_1\\n_2\\n_3}=0\\
     \myvec{1&2&2}\myvec{n_1\\n_2\\n_3}=0
 \end{align}
@@ -246,11 +282,11 @@ Also, Rank(A) $<$ number of unknowns, Thus we have infinite number of solutions.
 When the line2 is translated along the vector \vec{n}, it forms a plane. This plane intersects line1 at a single point $\vec{c_1}$ which is nearest to the line2. Point $\vec{c_1}$ is given by:
 \\
 \begin{align}
-\vec{c_1}=\vec{p_1}+\frac{(\vec{p_2}-\vec{p_1})^T \vec{n_2}}{\vec{d_1}^T \vec{n_2}}\vec{d_1} 
+\vec{c_1}=\vec{p_1}+\frac{(\vec{p_2}-\vec{p_1})^T \vec{n_2}}{\vec{m_1}^T \vec{n_2}}\vec{m_1} 
 \end{align}
-Here, $\Vec{n_2}$ is perpendicular to both vector $\Vec{d_2}$ and $\Vec{n}$. Thus, the dot product of the $\Vec{n_2}$ with $\Vec{d_2}$ and $\Vec{n}$ is zero:
+Here, $\Vec{n_2}$ is perpendicular to both vector $\Vec{m_2}$ and $\Vec{n}$. Thus, the dot product of the $\Vec{n_2}$ with $\Vec{m_2}$ and $\Vec{n}$ is zero:
 \begin{align}
-    \vec{d_2}^T\vec{n_2} =  0\\
+    \vec{m_2}^T\vec{n_2} =  0\\
     \vec{n}^T\vec{n_2} =  0\\
     \myvec{1&2&2}\vec{n_2}=0\\
     \myvec{-2&0&1}\vec{n_2}=0
@@ -274,14 +310,13 @@ Also, Rank(A) $<$ number of unknowns, Thus we have infinite number of solutions.
 \therefore \vec{c_1}= \myvec{2\\-5\\1}+\frac{11}{20}\myvec{3\\2\\6}\\
 \implies \vec{c_1}=\myvec{3.65\\-3.9\\4.3}
 \end{align}
-\newpage \noindent
 Similarly, the point on Line2 nearest to Line 1 is $\vec{c_2}$ given by:\\
 \begin{align}
-\vec{c_2}=\vec{p_2}+\frac{(\vec{p_1}-\vec{p_2})^T \vec{n_1}}{\vec{d_2}^T \vec{n_1}}\vec{d_2} \\
+\vec{c_2}=\vec{p_2}+\frac{(\vec{p_1}-\vec{p_2})^T \vec{n_1}}{\vec{m_2}^T \vec{n_1}}\vec{m_2}
 \end{align}
-Here, $\Vec{n_1}$ is perpendicular to both vector $\Vec{d_1}$ and $\Vec{n}$. Thus, the dot product of the $\Vec{n_1}$ with $\Vec{d_1}$ and $\Vec{n}$ is zero:
+Here, $\Vec{n_1}$ is perpendicular to both vector $\Vec{m_1}$ and $\Vec{n}$. Thus, the dot product of the $\Vec{n_1}$ with $\Vec{m_1}$ and $\Vec{n}$ is zero:
 \begin{align}
-    \vec{d_1}^T\vec{n_1} =  0\\
+    \vec{m_1}^T\vec{n_1} =  0\\
     \vec{n}^T\vec{n_1} =  0\\
     \myvec{3&2&6}\vec{n_2}=0\\
     \myvec{-2&0&1}\vec{n_2}=0
@@ -315,7 +350,7 @@ The minimum distance can be found using points $\vec{c_1}$ and $\vec{c_2}$ as :
     d_{min}=\sqrt{(3.65-8.05)^2+(-3.9+3.9)^2+(4.3-2.1)^2}\\
     d_{min}=\sqrt{24.2} \ \implies d_{min}=\textbf{4.92} 
 \end{align}
-\begin{figure}[ht]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=10cm, height=8cm]{Figure_1}
 \caption{Problem 1 : Lines crossing each other, but not intersecting}
@@ -345,15 +380,15 @@ Hence, the equations are inconsistent, which proves that the two lines do not in
 \\
 The given equations are in the form:
 \begin{align}
-    \textbf{x}=\vec{p_1} + \lambda_1\vec{d_1}\\
-    \textbf{x}=\vec{p_2} + \lambda_2\vec{d_2}
+    \textbf{x}=\vec{p_1} + \lambda_1\vec{m_1}\\
+    \textbf{x}=\vec{p_2} + \lambda_2\vec{m_2}
 \end{align}
-Where, $\vec{p_1}$ and $\vec{p_2}$ are points on line1 and line2 respectively. Also, $\vec{d_1}$ and $\vec{d_2}$ are the direction vectors of respective lines.
+Where, $\vec{p_1}$ and $\vec{p_2}$ are points on line1 and line2 respectively. Also, $\vec{m_1}$ and $\vec{m_2}$ are the direction vectors of respective lines.
 \\
 The vector $\vec{n}$ is perpendicular to both lines. Thus, the dot product of the respective directional vectors and n is zero:
 \begin{align}
-    \vec{d_1}^T\vec{n} =  0\\
-    \vec{d_2}^T\vec{n} =  0
+    \vec{m_1}^T\vec{n} =  0\\
+    \vec{m_2}^T\vec{n} =  0
 \end{align}
 \begin{align}
     \myvec{1&-1&-2}\myvec{n_1\\n_2\\n_3}=0\\
@@ -379,11 +414,11 @@ Also, Rank(A) $<$ number of unknowns, Thus we have infinite number of solutions.
 When the line2 is translated along the vector \vec{n}, it forms a plane. This plane intersects line1 at a single point $\vec{c_1}$ which is nearest to the line2. Point $\vec{c_1}$ is given by:
 \\
 \begin{align}
-\vec{c_1}=\vec{p_1}+\frac{(\vec{p_2}-\vec{p_1})^T \vec{n_2}}{\vec{d_1}^T \vec{n_2}}\vec{d_1} 
+\vec{c_1}=\vec{p_1}+\frac{(\vec{p_2}-\vec{p_1})^T \vec{n_2}}{\vec{m_1}^T \vec{n_2}}\vec{m_1} 
 \end{align}
-Here, $\Vec{n_2}$ is perpendicular to both vector $\Vec{d_2}$ and $\Vec{n}$. Thus, the dot product of the $\Vec{n_2}$ with $\Vec{d_2}$ and $\Vec{n}$ is zero:
+Here, $\Vec{n_2}$ is perpendicular to both vector $\Vec{m_2}$ and $\Vec{n}$. Thus, the dot product of the $\Vec{n_2}$ with $\Vec{m_2}$ and $\Vec{n}$ is zero:
 \begin{align}
-    \vec{d_2}^T\vec{n_2} =  0\\
+    \vec{m_2}^T\vec{n_2} =  0\\
     \vec{n}^T\vec{n_2} =  0\\
     \myvec{3&-5&-4}\vec{n_2}=0\\
     \myvec{3&1&1}\vec{n_2}=0
@@ -409,15 +444,15 @@ Also, Rank(A) $<$ number of unknowns, Thus we have infinite number of solutions.
 \vec{c_1}= \myvec{3\\-1\\-2}+\frac{941}{22}\myvec{1\\-1\\-2}\\
 \implies \vec{c_1}=\myvec{45.77 \\ -41.77\\ -87.54}
 \end{align}
-\\
+\newpage \noindent
 Similarly, the point on Line2 nearest to Line 1 is $\vec{c_2}$ given by:\\
 \begin{align}
-\vec{c_2}=\vec{p_2}+\frac{(\vec{p_1}-\vec{p_2})^T \vec{n_1}}{\vec{d_2}^T \vec{n_1}}\vec{d_2} 
+\vec{c_2}=\vec{p_2}+\frac{(\vec{p_1}-\vec{p_2})^T \vec{n_1}}{\vec{m_2}^T \vec{n_1}}\vec{m_2} 
 \end{align}
-Here, $\Vec{n_1}$ is perpendicular to both vector $\Vec{d_1}$ and $\Vec{n}$. Thus, the dot product of the $\Vec{n_1}$ with $\Vec{d_1}$ and $\Vec{n}$ is zero:
+Here, $\Vec{n_1}$ is perpendicular to both vector $\Vec{m_1}$ and $\Vec{n}$. Thus, the dot product of the $\Vec{n_1}$ with $\Vec{m_1}$ and $\Vec{n}$ is zero:
 \\
 \begin{align}
-    \vec{d_1}^T\vec{n_1} =  0\\
+    \vec{m_1}^T\vec{n_1} =  0\\
     \vec{n}^T\vec{n_1} =  0\\
     \myvec{1&-1&-2}\vec{n_2}=0\\
     \myvec{3&1&1}\vec{n_2}=0
@@ -447,7 +482,6 @@ The minimum distance can be found using points $\vec{c_1}$ and $\vec{c_2}$ as:
     d_{min}=\sqrt{(16.08)^2+(5.38)^2+(5.38)^2}\\
     d_{min}=\sqrt{316.8} \ \implies d_{min}=\textbf{17.79} 
 \end{align}
-\newpage
 \begin{figure}[h!]
 \centering
 \includegraphics[width=10cm, height=8cm]{Figure_2}
