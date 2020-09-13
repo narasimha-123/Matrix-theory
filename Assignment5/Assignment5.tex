@@ -156,90 +156,86 @@ https://github.com/sachinomdubey/Matrix-theory/Assignment5
 \subsection{Explanation}
 In order to prove that line $PQ $ is the perpendicular bisector of $AB$, two conditions need to be met:
 \begin{enumerate}
-    \item $AM$=$BM$
     \item Angle between line $AB$ and line $PQ$ should be $90\degree$.
+    \item $AM$=$BM$
 \end{enumerate}
 Steps to prove the first condition are as follow:
+\begin{enumerate}
+    \item Here, the following information is given:
+    \begin{align}
+    \norm{\vec{P}-\vec{A}}=\norm{\vec{P}-\vec{B}} \label{eq2.2}\\
+    \norm{\vec{Q}-\vec{A}}=\norm{\vec{Q}-\vec{B}}
+\end{align}
+    \item Take the norms and simplify to get $\vec{P}$ and $\vec{Q}$. Using $\vec{P}$ and $\vec{Q}$, prove the following condition to show that lines $PQ$ is the perpendicular to line $AB$:
+    \begin{align}
+    \myvec{\vec{P}-\vec{Q}}^T\myvec{\vec{A}-\vec{B}}=0
+    \end{align}
+\end{enumerate}
+Steps to prove the second condition are as follow:
 \begin{enumerate}
     \item Finding the normal vectors of line $PQ$. Further using the normal vector to find the equation of line $PQ$. 
     \item The solution of equation of line $AB$ and line $PQ$ will give the co-ordinates of point $M$. 
     \item Using the distance formula to prove that $AM$=$BM$.
 \end{enumerate}
-Steps to prove the second condition are as follow:
-\begin{enumerate}
-    \item Finding the normal vectors of line $AB$ and $PQ$.
-    \item Taking their dot product and checking whether it is zero. If the dot product of the normal vectors is zero, the lines will be perpendicular to each other.
-\end{enumerate}
-
 \subsection{Solution}
 Let the Points $\vec{A}$, $\vec{B}$, $\vec{P}$ and $\vec{Q}$ be:
 \begin{align}
     \vec{A}=\myvec{0 \\ 0} & \vec{B}=\myvec{a \\ 0} & \vec{P}=\myvec{p_1 \\ p_2}&\vec{Q}=\myvec{q_1 \\ q_2}
 \end{align}
-The point $\vec{P}$ is equidistant from the points $\vec{A}$ and $\vec{B}$. Let the distance be $b$. Then we can write:
+The points $\vec{P}$ and $\vec{Q}$  are equidistant from the points $\vec{A}$ and $\vec{B}$. Then we can write:
 \begin{align}
-    \norm{\vec{A}-\vec{P}}=b \label{eq2.2}\\
-    \norm{\vec{B}-\vec{P}}=b \label{eq2.3}
+    \norm{\vec{P}-\vec{A}}=\norm{\vec{P}-\vec{B}} \label{eq2.2}\\
+    \norm{\vec{Q}-\vec{A}}=\norm{\vec{Q}-\vec{B}} \label{eq2.3}
 \end{align}
 The equation \ref{eq2.2} can be further written as:
 \begin{align}
-    \norm{\myvec{0\\0}-\myvec{p_1\\p_2}}=b \\
-    \sqrt{p_1^2+p_2^2}=b\\
-    p_1^2+p_2^2=b^2 \label{eq2.6}
+    \norm{\myvec{p_1\\p_2}-\myvec{0\\0}}=\norm{\myvec{p_1\\p_2}-\myvec{a\\0}} \\
+    \sqrt{p_1^2+p_2^2}=  \sqrt{(p_1-a)^2+p_2^2}\\
+    p_1^2+p_2^2= p_1^2+p_2^2-2ap_1+a^2\\
+    \therefore a^2-2ap_1=0\\
+    \implies p_1=a/2\\
+    \therefore \vec{P}=\myvec{a/2 \\ p_2}  \label{eq3.9}
 \end{align}
 Similarly, the equation \ref{eq2.3} can be further written as:
 \begin{align}
-    \norm{\myvec{a\\0}-\myvec{p_1\\p_2}}=b \\
-    \sqrt{(a-p_1)^2+p_2^2}=b\\
-    p_1^2+p_2^2-2ap_1+a^2=b^2 \label{eq2.9}
+    \norm{\myvec{q_1\\q_2}-\myvec{0\\0}}=\norm{\myvec{q_1\\q_2}-\myvec{a\\0}} \\
+    \sqrt{q_1^2+q_2^2}=  \sqrt{(q_1-a)^2+q_2^2}\\
+    q_1^2+q_2^2= q_1^2+q_2^2-2aq_1+a^2 \\
+    \therefore a^2-2aq_1=0\\
+    \implies q_1=a/2\\
+    \therefore \vec{Q}=\myvec{a/2 \\ q_2} \label{eq3.15}
 \end{align}
-From equations \ref{eq2.6} and \ref{eq2.9}, we get:
+The lines $AB$ and $PQ$ will be perpendicular, when the following condition is met:
 \begin{align}
-    p_1^2+p_2^2-2ap_1+a^2=p_1^2+p_2^2\\
-    \therefore a^2-2ap_1=0\\
-    \implies p_1=a/2
+    \myvec{\vec{P}-\vec{Q}}^T\myvec{\vec{A}-\vec{B}}=0\label{eq3.16}
 \end{align}
-Putting $p_1$ in equation \ref{eq2.6}:
+Using equation \ref{eq3.9} and \ref{eq3.15}, The RHS can be written as:
 \begin{align}
-   (a/2)^2+p_2^2=b^2 \\
-    p_2=\pm \frac{\sqrt{4b^2-a^2}}{2}
+  RHS=\myvec{0 \\ (p_2-q_2)}^T\myvec{-a \\ 0}\\
+  RHS=\myvec{0 & (p_2-q_2)}\myvec{-a \\ 0}\\
+  RHS = 0\\
+  \therefore RHS=LHS
 \end{align}
-Taking positive value of $p_2$ as the point $\vec{P}$ lies in the first quadrant.
+Therefore, The lines $AB$ and $PQ$ are perpendicular to each other as the equation \ref{eq3.16} is satisfied. \\
+The vector equations of lines $AB$ and $PQ$ can be written as:
 \begin{align}
-    \therefore p_2=\frac{\sqrt{4b^2-a^2}}{2}
+\vec{x}=\myvec{0\\0}+ \lambda_1 \myvec{-a \\ 0}\label{eq3.21}\\
+\vec{x}=\myvec{a/2\\p_2}+ \lambda_2 \myvec{0 \\ (p_2-q_2)} \label{eq3.22}
 \end{align}
-Thus, point $\vec{P}$ is:
+The lines intersect at point M, Equating equations \ref{eq3.21} and \ref{eq3.22} and solving the equations in matrix form:
 \begin{align}
-    \vec{P}=\myvec{a/2\\\sqrt{4b^2-a^2}/2}\\
+-a\lambda_1=a/2\\
+0= p_2+ \lambda_2 (p_2-q_2)\\
+\myvec{-a & 0 &\vrule & a/2\\0 & (p_2-q_2) &\vrule& -p_2}\\
+\xleftrightarrow[]{R_1\leftarrow R_1/-a}
+\myvec{1 & 0 &\vrule & -1/2\\0 & (p_2-q_2) &\vrule& -p_2}\\
+\xleftrightarrow[]{R_2\leftarrow R_2/(p_2-q_2)}
+\myvec{1 & 0 &\vrule & -1/2\\0 & 1 &\vrule& -p_2/(p_2-q_2)}
 \end{align}
-Similarly, The point $\vec{Q}$ equidistant from the points $\vec{A}$ and $\vec{B}$ with distance $c$ can be calculated as:
+Therfore, $\lambda_1 = -1/2$ and $\lambda_2=-p_2/(p_2-q_2)$\\
+Putting these values in equation \ref{eq3.21}, We get point \vec{M} as:
 \begin{align}
-    \vec{Q}=\myvec{a/2\\-\sqrt{4c^2-a^2}/2}
-\end{align}
-The directional vector of the line PQ is given by:
-\begin{align}
-    \vec{m}_{PQ}=(\vec{P}-\vec{Q})\\
-    \vec{m}_{PQ}=\myvec{a/2\\\sqrt{4b^2-a^2}/2}-\myvec{a/2\\-\sqrt{4c^2-a^2}/2}\\
-    \vec{m}_{PQ}=\myvec{0\\\displaystyle \frac{\sqrt{4b^2-a^2}+\sqrt{4c^2-a^2}}{2}}
-\end{align}
-The normal vector of line PQ is:
-\begin{align}
-    \vec{n}_{PQ} = \myvec{0&-1\\1&0}\vec{m}_{PQ} \\
-    \vec{n}_{PQ} = \myvec{\displaystyle \frac{-\sqrt{4b^2-a^2}-\sqrt{4c^2-a^2}}{2}\\0} \label{eq3.23}
-\end{align}
-Equation of a line PQ in terms of normal vector is by:
-\begin{align}
-\vec{n}_{PQ}^T\brak{\vec{x}-\vec{P}} &= 0\\
-\therefore \myvec{a/2 & 0} \vec{x} &= 0 \label{eq3.25}
-\end{align}
-Since the line AB is the X-axis, its equation and normal vector can be written as:
-\begin{align}
-\myvec{0 & 1} \vec{x} &= 0 \label{eq3.26}\\
-\vec{n}_{AB}=\myvec{0\\1} \label{eq3.27}
-\end{align}
-Solving equation \ref{eq3.25} and \ref{eq3.26}, we get the cordinates of point $\vec{M}$:
-\begin{align}
-    \vec{M}=\myvec{a/2\\0}
+\vec{M}=\myvec{a/2\\0}
 \end{align}
 The segments $AM$ and $BM$ are given as:
 \begin{align}
@@ -254,10 +250,5 @@ From equation \ref{eq3.30} and \ref{eq3.33} :
 \begin{align}
     AM=BM \label{eq3.35}
 \end{align}
-Using equation \ref{eq3.23} and \ref{eq3.27}, dot product of normal vectors of line $AB$ and $PQ$ is:
-\begin{align}
-    \vec{n}_{AB}^T\vec{n}_{PQ}=\myvec{0&1}\myvec{\displaystyle \frac{-\sqrt{4b^2-a^2}-\sqrt{4c^2-a^2}}{2}\\0}\\
-    \therefore\vec{n}_{AB}^T\vec{n}_{PQ}=0 \label{eq3.37}
-\end{align}
-From equation \ref{eq3.35} and \ref{eq3.37}, $PQ$ is perpendicular bisector of $AB$. Hence proved.
+Thus, Both conditions are satisfied, which make line $PQ$ perpendicular bisector of $AB$. Hence proved.
 \end{document}
