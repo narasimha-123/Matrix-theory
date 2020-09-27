@@ -147,108 +147,82 @@ https://github.com/sachinomdubey/Matrix-theory/Assignment5
 \end{lstlisting}
 \subsection{Problem}
 (Geolin 1.9) $AB$ is a line-segment. $P$ and $Q$ are points on opposite sides of $AB$ such that each of them is equidistant from the points $A$ and $B$. Show that the line $PQ $ is the perpendicular bisector of $AB$.
+\\
 \begin{figure}[h!]
 \centering
 \includegraphics[width=7cm, height=7cm]{Figure_51}
 \caption{}
 \label{Fig4}
 \end{figure}
+\\
 \subsection{Explanation}
 In order to prove that line $PQ $ is the perpendicular bisector of $AB$, two conditions need to be met:
 \begin{enumerate}
-    \item Angle between line $AB$ and line $PQ$ should be $90\degree$.
     \item $AM$=$BM$
+    \item $PM \perp AB $
 \end{enumerate}
-Steps to prove the first condition are as follow:
-\begin{enumerate}
-    \item Here, the following information is given:
-    \begin{align}
-    \norm{\vec{P}-\vec{A}}=\norm{\vec{P}-\vec{B}} \label{eq2.2}\\
-    \norm{\vec{Q}-\vec{A}}=\norm{\vec{Q}-\vec{B}}
-\end{align}
-    \item Take the norms and simplify to get $\vec{P}$ and $\vec{Q}$. Using $\vec{P}$ and $\vec{Q}$, prove the following condition to show that lines $PQ$ is the perpendicular to line $AB$:
-    \begin{align}
-    \myvec{\vec{P}-\vec{Q}}^T\myvec{\vec{A}-\vec{B}}=0
-    \end{align}
-\end{enumerate}
-Steps to prove the second condition are as follow:
-\begin{enumerate}
-    \item Finding the normal vectors of line $PQ$. Further using the normal vector to find the equation of line $PQ$. 
-    \item The solution of equation of line $AB$ and line $PQ$ will give the co-ordinates of point $M$. 
-    \item Using the distance formula to prove that $AM$=$BM$.
-\end{enumerate}
+These conditions can be proved using cosine law in vector form and some vector theory. The solution is as follow:
 \subsection{Solution}
-Let the Points $\vec{A}$, $\vec{B}$, $\vec{P}$ and $\vec{Q}$ be:
+It is given that the points $\vec{P}$ and $\vec{Q}$  are equidistant from the points $\vec{A}$ and $\vec{B}$. Thus we can write:
 \begin{align}
-    \vec{A}=\myvec{0 \\ 0} & \vec{B}=\myvec{a \\ 0} & \vec{P}=\myvec{p_1 \\ p_2}&\vec{Q}=\myvec{q_1 \\ q_2}
+    \norm{\vec{PA}}=\norm{\vec{PB}} \label{eq2.2}\\
+    \norm{\vec{QA}}=\norm{\vec{QB}} \label{eq2.3}
 \end{align}
-The points $\vec{P}$ and $\vec{Q}$  are equidistant from the points $\vec{A}$ and $\vec{B}$. Then we can write:
+Using the law of cosine, we can write:
 \begin{align}
-    \norm{\vec{P}-\vec{A}}=\norm{\vec{P}-\vec{B}} \label{eq2.2}\\
-    \norm{\vec{Q}-\vec{A}}=\norm{\vec{Q}-\vec{B}} \label{eq2.3}
+    \norm{\vec{AQ}}^2= \norm{\vec{PA}}^2+ \norm{\vec{PQ}}^2-2 \norm{\vec{PA}} \norm{\vec{PQ}}cos \Theta \label{eq3.3}\\
+    \norm{\vec{BQ}}^2= \norm{\vec{PB}}^2+ \norm{\vec{PQ}}^2-2 \norm{\vec{PB}} \norm{\vec{PQ}}cos \phi \label{eq3.4}
 \end{align}
-The equation \ref{eq2.2} can be further written as:
+From equations \ref{eq2.2} \ref{eq2.3} \ref{eq3.3} and \ref{eq3.4}, we can write:
 \begin{align}
-    \norm{\myvec{p_1\\p_2}-\myvec{0\\0}}=\norm{\myvec{p_1\\p_2}-\myvec{a\\0}} \\
-    \sqrt{p_1^2+p_2^2}=  \sqrt{(p_1-a)^2+p_2^2}\\
-    p_1^2+p_2^2= p_1^2+p_2^2-2ap_1+a^2\\
-    \therefore a^2-2ap_1=0\\
-    \implies p_1=a/2\\
-    \therefore \vec{P}=\myvec{a/2 \\ p_2}  \label{eq3.9}
+    cos \Theta = cos \phi \\
+    \therefore \implies \Theta = \phi \label{eq3.6}
 \end{align}
-Similarly, the equation \ref{eq2.3} can be further written as:
+Again using the law of cosine, we can write:
 \begin{align}
-    \norm{\myvec{q_1\\q_2}-\myvec{0\\0}}=\norm{\myvec{q_1\\q_2}-\myvec{a\\0}} \\
-    \sqrt{q_1^2+q_2^2}=  \sqrt{(q_1-a)^2+q_2^2}\\
-    q_1^2+q_2^2= q_1^2+q_2^2-2aq_1+a^2 \\
-    \therefore a^2-2aq_1=0\\
-    \implies q_1=a/2\\
-    \therefore \vec{Q}=\myvec{a/2 \\ q_2} \label{eq3.15}
+    \norm{\vec{AM}}^2= \norm{\vec{PA}}^2+ \norm{\vec{PM}}^2-2 \norm{\vec{PA}} \norm{\vec{PM}}cos \Theta \label{eq3.7}\\
+    \norm{\vec{BM}}^2= \norm{\vec{PB}}^2+ \norm{\vec{PM}}^2-2 \norm{\vec{PB}} \norm{\vec{PM}}cos \phi \label{eq3.8}
 \end{align}
-The lines $AB$ and $PQ$ will be perpendicular, when the following condition is met:
+From equations \ref{eq2.2} and \ref{eq3.6}, we can write:
 \begin{align}
-    \myvec{\vec{P}-\vec{Q}}^T\myvec{\vec{A}-\vec{B}}=0\label{eq3.16}
+  \norm{\vec{BM}}^2= \norm{\vec{PA}}^2+ \norm{\vec{PM}}^2-2 \norm{\vec{PA}} \norm{\vec{PM}}cos \Theta  \label{eq3.9}
 \end{align}
-Using equation \ref{eq3.9} and \ref{eq3.15}, The RHS can be written as:
+From equations \ref{eq3.7} and \ref{eq3.9}, we can write:
 \begin{align}
-  RHS=\myvec{0 \\ (p_2-q_2)}^T\myvec{-a \\ 0}\\
-  RHS=\myvec{0 & (p_2-q_2)}\myvec{-a \\ 0}\\
-  RHS = 0\\
-  \therefore RHS=LHS
+    \norm{\vec{AM}}^2=\norm{\vec{BM}}^2 \\
+    \therefore \norm{\vec{AM}}=\norm{\vec{BM}}
 \end{align}
-Therefore, The lines $AB$ and $PQ$ are perpendicular to each other as the equation \ref{eq3.16} is satisfied. \\
-The vector equations of lines $AB$ and $PQ$ can be written as:
+Thus, Segment $PQ$ bisects segment $AB$. \\
+From the figure, the vector $\vec{AB}$ can be written as:
 \begin{align}
-\vec{x}=\myvec{0\\0}+ \lambda_1 \myvec{-a \\ 0}\label{eq3.21}\\
-\vec{x}=\myvec{a/2\\p_2}+ \lambda_2 \myvec{0 \\ (p_2-q_2)} \label{eq3.22}
+\vec{AB}=\vec{AP}+\vec{PB} \label{eq3.12}
 \end{align}
-The lines intersect at point M, Equating equations \ref{eq3.21} and \ref{eq3.22} and solving the equations in matrix form:
+Also, the vector $\vec{PM}$ can be written as:
 \begin{align}
--a\lambda_1=a/2\\
-0= p_2+ \lambda_2 (p_2-q_2)\\
-\myvec{-a & 0 &\vrule & a/2\\0 & (p_2-q_2) &\vrule& -p_2}\\
-\xleftrightarrow[]{R_1\leftarrow R_1/-a}
-\myvec{1 & 0 &\vrule & -1/2\\0 & (p_2-q_2) &\vrule& -p_2}\\
-\xleftrightarrow[]{R_2\leftarrow R_2/(p_2-q_2)}
-\myvec{1 & 0 &\vrule & -1/2\\0 & 1 &\vrule& -p_2/(p_2-q_2)}
+\vec{PM}=\vec{PA}+\vec{AM}
 \end{align}
-Therfore, $\lambda_1 = -1/2$ and $\lambda_2=-p_2/(p_2-q_2)$\\
-Putting these values in equation \ref{eq3.21}, We get point \vec{M} as:
+The point $M$ is the midpoint of the segment $AB$, therefore the vector $\vec{AM}$ is :
 \begin{align}
-\vec{M}=\myvec{a/2\\0}
+    \vec{AM}=\frac{1}{2}\Vec{AB}\\
+    \therefore \vec{PM}=\vec{PA}+\frac{1}{2}\Vec{AB}
 \end{align}
-The segments $AM$ and $BM$ are given as:
+From equation \ref{eq3.12}:
 \begin{align}
-    AM=\norm{\vec{A}-\vec{M}} \\
-    \therefore AM=\norm{\myvec{0\\0}-\myvec{a/2\\0}}\\
-    \therefore AM=\sqrt{a^2/4+0}=a/2 \label{eq3.30}\\
-    Similarly,BM=\norm{\vec{B}-\vec{M}} \\
-    \therefore BM=\norm{\myvec{a\\0}-\myvec{a/2\\0}}\\
-    \therefore BM=\sqrt{a^2/4+0}=a/2\label{eq3.33}
+    \vec{PM}=\vec{PA}+\frac{1}{2}(\vec{AP}+\vec{PB})\\
+     \vec{PM}=\vec{PA}+\frac{1}{2}\vec{AP}+\frac{1}{2}\vec{PB}\\
+     \vec{PM}=\vec{PA}-\frac{1}{2}\vec{PA}+\frac{1}{2}\vec{PB}\\
+     \vec{PM}=\frac{1}{2}(\vec{PA}+\vec{PB}) \label{eq3.19}
 \end{align}
-From equation \ref{eq3.30} and \ref{eq3.33} :
+For $PM \perp AB $, The dot product of vectors $\Vec{AB}$ and $\Vec{PM}$ should be zero. Using equations \ref{eq3.12} and \ref{eq3.19}:
 \begin{align}
-    AM=BM \label{eq3.35}
+    \vec{AC}^T\vec{PM}=(\vec{AP}+\vec{PB})^T\frac{1}{2}(\vec{PA}+\vec{PB})\\
+     \vec{AC}^T\vec{PM}=\frac{1}{2}(\vec{AP}^T+\vec{PB}^T)(\vec{PA}+\vec{PB})\\
+     \vec{AC}^T\vec{PM}=\frac{1}{2}(-\vec{PA}^T+\vec{PB}^T)(\vec{PA}+\vec{PB})\\
+     \vec{AC}^T\vec{PM}=\frac{1}{2}(\vec{PB}^T\vec{PB}-\vec{PA}^T\vec{PA})
 \end{align}
-Thus, Both conditions are satisfied, which make line $PQ$ perpendicular bisector of $AB$. Hence proved.
+\begin{align}
+     \vec{AC}^T\vec{PM}=\frac{1}{2}(\norm{\vec{PB}}^2-\norm{\vec{PA}}^2)\\
+     \vec{AC}^T\vec{PM}=0
+\end{align}
+Thus, Segment $PQ$ is perpendicular bisector of segment $AB$.
 \end{document}
