@@ -2,10 +2,7 @@
 
 \usepackage{setspace}
 \usepackage{gensymb}
-
 \singlespacing
-
-
 \usepackage[cmex10]{amsmath}
 
 \usepackage{amsthm}
@@ -80,6 +77,7 @@ columns=fullflexible
 \newcommand{\EEQA}{\end{eqnarray}}
 \newcommand{\define}{\stackrel{\triangle}{=}}
 \bibliographystyle{IEEEtran}
+\raggedbottom
 
 \providecommand{\mbf}{\mathbf}
 \providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
@@ -129,7 +127,6 @@ columns=fullflexible
 \vspace{3cm}
 \title{Assignment 5}
 \author{Sachinkumar Dubey - EE20MTECH11009}
-
 \maketitle
 \newpage
 \bigskip
@@ -146,8 +143,7 @@ and latex-tikz codes from
 https://github.com/sachinomdubey/Matrix-theory/Assignment5
 \end{lstlisting}
 \subsection{Problem}
-(Geolin 1.9) $AB$ is a line-segment. $P$ and $Q$ are points on opposite sides of $AB$ such that each of them is equidistant from the points $A$ and $B$. Show that the line $PQ $ is the perpendicular bisector of $AB$.
-\\
+(Geolin 1.9) $AB$ is a line-segment. $P$ and $Q$ are points on opposite sides of $AB$ such that each of them is equidistant from the points $A$ and $B$. Show that the line $PQ $ is the perpendicular bisector of $AB$.\\
 \begin{figure}[h!]
 \centering
 \includegraphics[width=7cm, height=7cm]{Figure_51}
@@ -158,71 +154,60 @@ https://github.com/sachinomdubey/Matrix-theory/Assignment5
 \subsection{Explanation}
 In order to prove that line $PQ $ is the perpendicular bisector of $AB$, two conditions need to be met:
 \begin{enumerate}
+        \item $PQ \perp AB $
     \item $AM$=$BM$
-    \item $PM \perp AB $
 \end{enumerate}
-These conditions can be proved using cosine law in vector form and some vector theory. The solution is as follow:
+These conditions can be proved as follow:
 \subsection{Solution}
-It is given that the points $\vec{P}$ and $\vec{Q}$  are equidistant from the points $\vec{A}$ and $\vec{B}$. Thus we can write:
+\noindent It is given that the points $\vec{P}$ and $\vec{Q}$  are equidistant from the points $\vec{A}$ and $\vec{B}$. Thus we can write:
 \begin{align}
-    \norm{\vec{PA}}=\norm{\vec{PB}} \label{eq2.2}\\
-    \norm{\vec{QA}}=\norm{\vec{QB}} \label{eq2.3}
+    \norm{\vec{P}-\vec{A}}=\norm{\vec{P}-\vec{B}} \label{eq2.2}\\
+    \norm{\vec{Q}-\vec{A}}=\norm{\vec{Q}-\vec{B}} \label{eq2.3}
 \end{align}
-Using the law of cosine, we can write:
+Squaring both sides of equations \ref{eq2.2} and expanding further, we can write:
 \begin{align}
-    \norm{\vec{AQ}}^2= \norm{\vec{PA}}^2+ \norm{\vec{PQ}}^2-2 \norm{\vec{PA}} \norm{\vec{PQ}}cos \Theta \label{eq3.3}\\
-    \norm{\vec{BQ}}^2= \norm{\vec{PB}}^2+ \norm{\vec{PQ}}^2-2 \norm{\vec{PB}} \norm{\vec{PQ}}cos \phi \label{eq3.4}
+    \brak{\vec{P}-\vec{A}}^T\brak{\vec{P}-\vec{A}}=\brak{\vec{P}-\vec{B}}^T\brak{\vec{P}-\vec{B}} \\
+    \vec{P}^T\vec{P}-\vec{P}^T\vec{A}-\vec{A}^T\vec{P}+\vec{A}^T\vec{A}= \nonumber \\ 
+     \vec{P}^T\vec{P}-\vec{P}^T\vec{B}-\vec{B}^T\vec{P}+\vec{B}^T\vec{B} \\
+     \therefore \vec{A}^T\vec{A}-\vec{B}^T\vec{B}=-2\vec{P}^T\vec{B}+2\vec{P}^T\vec{A}\label{eq3.5}
 \end{align}
-From equations \ref{eq2.2} \ref{eq2.3} \ref{eq3.3} and \ref{eq3.4}, we can write:
+Similarly, Squaring both sides of equations \ref{eq2.3} and expanding further, we can write:
 \begin{align}
-    cos \Theta = cos \phi \\
-    \therefore \implies \Theta = \phi \label{eq3.6}
+    \brak{\vec{Q}-\vec{A}}^T\brak{\vec{Q}-\vec{A}}=\brak{\vec{Q}-\vec{B}}^T\brak{\vec{Q}-\vec{B}} \\
+    \vec{Q}^T\vec{Q}-\vec{Q}^T\vec{A}-\vec{A}^T\vec{Q}+\vec{A}^T\vec{A}= \nonumber \\ 
+     \vec{Q}^T\vec{Q}-\vec{Q}^T\vec{B}-\vec{B}^T\vec{Q}+\vec{B}^T\vec{B} \\
+     \therefore \vec{A}^T\vec{A}-\vec{B}^T\vec{B}=-2\vec{Q}^T\vec{B}+2\vec{Q}^T\vec{A}\label{eq3.8}
 \end{align}
-Again using the law of cosine, we can write:
+From equations \ref{eq3.5} and \ref{eq3.8}, we can write:
 \begin{align}
-    \norm{\vec{AM}}^2= \norm{\vec{PA}}^2+ \norm{\vec{PM}}^2-2 \norm{\vec{PA}} \norm{\vec{PM}}cos \Theta \label{eq3.7}\\
-    \norm{\vec{BM}}^2= \norm{\vec{PB}}^2+ \norm{\vec{PM}}^2-2 \norm{\vec{PB}} \norm{\vec{PM}}cos \phi \label{eq3.8}
+    2\vec{P}^T\brak{\vec{A}-\vec{B}}=2\vec{Q}^T\brak{\vec{A}-\vec{B}}\\
+    \vec{P}^T\brak{\vec{A}-\vec{B}}-\vec{Q}^T\brak{\vec{A}-\vec{B}}=0\\
+    \brak{\vec{P}-\vec{Q}}^T\brak{\vec{A}-\vec{B}}=0
 \end{align}
-From equations \ref{eq2.2} and \ref{eq3.6}, we can write:
+Thus, Segment $PQ$ is perpendicular to segment $AB$ ($PQ \perp AB$).\\ \\
+From the figure, equations \ref{eq2.2} can also be written as:
 \begin{align}
-  \norm{\vec{BM}}^2= \norm{\vec{PA}}^2+ \norm{\vec{PM}}^2-2 \norm{\vec{PA}} \norm{\vec{PM}}cos \Theta  \label{eq3.9}
+    \norm{\brak{\vec{P}-\vec{M}}+\brak{\vec{M}-\vec{A}}}=\norm{\brak{\vec{P}-\vec{M}}+\brak{\vec{M}-\vec{B}}}
 \end{align}
-From equations \ref{eq3.7} and \ref{eq3.9}, we can write:
+Squaring and expanding both the sides, we get:
 \begin{align}
-    \norm{\vec{AM}}^2=\norm{\vec{BM}}^2 \\
-    \therefore \norm{\vec{AM}}=\norm{\vec{BM}}
-\end{align}
-Thus, Segment $PQ$ bisects segment $AB$. \\
-From the figure, the vector $\vec{AB}$ can be written as:
-\begin{align}
-\vec{AB}=\vec{AP}+\vec{PB} \label{eq3.12}
-\end{align}
-Also, the vector $\vec{PM}$ can be written as:
-\begin{align}
-\vec{PM}=\vec{PA}+\vec{AM}
-\end{align}
-The point $M$ is the midpoint of the segment $AB$, therefore the vector $\vec{AM}$ is :
-\begin{align}
-    \vec{AM}=\frac{1}{2}\Vec{AB}\\
-    \therefore \vec{PM}=\vec{PA}+\frac{1}{2}\Vec{AB}
-\end{align}
-From equation \ref{eq3.12}:
-\begin{align}
-    \vec{PM}=\vec{PA}+\frac{1}{2}(\vec{AP}+\vec{PB})\\
-     \vec{PM}=\vec{PA}+\frac{1}{2}\vec{AP}+\frac{1}{2}\vec{PB}\\
-     \vec{PM}=\vec{PA}-\frac{1}{2}\vec{PA}+\frac{1}{2}\vec{PB}\\
-     \vec{PM}=\frac{1}{2}(\vec{PA}+\vec{PB}) \label{eq3.19}
-\end{align}
-For $PM \perp AB $, The dot product of vectors $\Vec{AB}$ and $\Vec{PM}$ should be zero. Using equations \ref{eq3.12} and \ref{eq3.19}:
-\begin{align}
-    \vec{AC}^T\vec{PM}=(\vec{AP}+\vec{PB})^T\frac{1}{2}(\vec{PA}+\vec{PB})\\
-     \vec{AC}^T\vec{PM}=\frac{1}{2}(\vec{AP}^T+\vec{PB}^T)(\vec{PA}+\vec{PB})\\
-     \vec{AC}^T\vec{PM}=\frac{1}{2}(-\vec{PA}^T+\vec{PB}^T)(\vec{PA}+\vec{PB})\\
-     \vec{AC}^T\vec{PM}=\frac{1}{2}(\vec{PB}^T\vec{PB}-\vec{PA}^T\vec{PA})
+\brak{\brak{\vec{P}-\vec{M}}+\brak{\vec{M}-\vec{A}}}^T\brak{\brak{\vec{P}-\vec{M}}+\brak{\vec{M}-\vec{A}}} = \nonumber \\
+\brak{\brak{\vec{P}-\vec{M}}+\brak{\vec{M}-\vec{B}}}^T\brak{\brak{\vec{P}-\vec{M}}+\brak{\vec{M}-\vec{B}}}
 \end{align}
 \begin{align}
-     \vec{AC}^T\vec{PM}=\frac{1}{2}(\norm{\vec{PB}}^2-\norm{\vec{PA}}^2)\\
-     \vec{AC}^T\vec{PM}=0
+\brak{\vec{P}-\vec{M}}^T\brak{\vec{P}-\vec{M}}+\brak{\vec{P}-\vec{M}}^T\brak{\vec{M}-\vec{A}}+ \nonumber \\\brak{\vec{M}-\vec{A}}^T\brak{\vec{P}-\vec{M}}+\brak{\vec{M}-\vec{A}}^T\brak{\vec{M}-\vec{A}} = \nonumber \\
+\brak{\vec{P}-\vec{M}}^T\brak{\vec{P}-\vec{M}}+\brak{\vec{P}-\vec{M}}^T\brak{\vec{M}-\vec{B}}+ \nonumber \\\brak{\vec{M}-\vec{B}}^T\brak{\vec{P}-\vec{M}}+\brak{\vec{M}-\vec{B}}^T\brak{\vec{M}-\vec{B}}\\
+\norm{\brak{\vec{M}-\vec{A}}}^2+2\brak{\vec{M}-\vec{A}}^T\brak{\vec{P}-\vec{M}} = \nonumber \\
+\norm{\brak{\vec{M}-\vec{B}}}^2+2\brak{\vec{M}-\vec{B}}^T\brak{\vec{P}-\vec{M}} \label{eq3.15}
 \end{align}
+Since, $PQ\perp AB$. Hence, we can write:
+\begin{align}
+\brak{\vec{M}-\vec{A}}^T\brak{\vec{P}-\vec{M}}=\brak{\vec{M}-\vec{B}}^T\brak{\vec{P}-\vec{M}}=0 \label{eq3.16}
+\end{align}
+From equation \ref{eq3.15} and \ref{eq3.16}, we get:
+\begin{align}
+    \norm{\brak{\vec{M}-\vec{A}}}=\norm{\brak{\vec{M}-\vec{B}}}
+\end{align}
+Thus, $M$ is the midpoint of segment $AB$ ($AM=BM$).
 Thus, Segment $PQ$ is perpendicular bisector of segment $AB$.
 \end{document}
