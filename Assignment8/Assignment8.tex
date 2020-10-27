@@ -189,7 +189,7 @@ The distance $d_{min}$ between point $D(-1, 2, -4)$ and the given plane  is obta
 \begin{align}
     \therefore d_{min}=\frac{23}{49} \times \sqrt{(3)^2+(2)^2+(-6)^2}\\
     \therefore d_{min}=\frac{23}{49} \times 7\\
-    \implies \boxed{d_{min}=\frac{23}{7}= 3.2857}
+    \implies \boxed{d_{min}=\frac{23}{7}= 3.2857} \label{eq_20}
 \end{align}
 \begin{figure}[h!]
 \centering
@@ -201,6 +201,11 @@ The distance $d_{min}$ between point $D(-1, 2, -4)$ and the given plane  is obta
 \end{figure}
 \\
 \textbf{Finding the foot of perpendicular from point $\vec{D}$ to the given plane using SVD:}\\
+We need to represent the equation of plane in parametric form,
+\begin{align}
+	\vec{Q} = \vec{p} + \alpha_1\vec{m_1} + \alpha_2\vec{m_2}\label{eq3}
+\end{align}
+Here $\vec{p}$ is any point on plane and $\vec{m_1}, \vec{m_2}$ are two vectors parallel to plane and hence $\perp$ to $\vec{n}$.
 First we find orthogonal vectors $\vec{m_1}$ and $\vec{m_2}$ to the vector $\vec{n}$. Let, $\vec{m} = \myvec{a\\b\\c}$, then
 \begin{align}
 \vec{m^T}\vec{n} &= 0 \nonumber \\
@@ -215,13 +220,22 @@ By substituting $a=0;b=1$ in \eqref{eq:eq_1},
 \begin{align} \label{eq:eq_3}
     \vec{m_2} = \myvec{0 \\ 1 \\ 1/3} 
 \end{align}
-Now $\vec{M}$ can be written as,
-\begin{align} \label{eq:eq_4}
-    \vec{M} = \myvec{\vec{m_1} & \vec{m_2}} = \myvec{1 & 0 \\ 0 & 1 \\ 1/2 & 1/3}
+Let us find point $\vec{p}$ on the plane. Put $x=1,z=0$ in \eqref{eq2}, we get $\vec{p} = \myvec{1\\\frac{-1}{2}\\0}$\\
+Let $\vec{Q}$ be the point on plane with shortest distance to point $\vec{d}$.
+$\vec{Q}$ can be expressed in \eqref{eq3} form as
+\begin{align}\label{eq6}
+	\vec{Q} = \myvec{1\\\frac{-1}{2}\\0} + \alpha_1\myvec{1\\0\\\frac{1}{2}} + \alpha_2\myvec{0\\1\\\frac{1}{3}} \label{eq_25}
 \end{align}
-Solving $\vec{M}\vec{x}=\vec{d}$ will give us the required solution. 
-\begin{align} \label{eq:eq_5}
-    \implies \myvec{1 & 0 \\ 0 & 1 \\ 1/2 & 1/3}\vec{x} = \myvec{-1 \\ 2 \\ -4}
+Computation of Pseudo Inverse using SVD in order to determine the value of $\alpha_1$ and $\alpha_2$ :
+\begin{align}
+	\label{eq7}\myvec{1\\\frac{-1}{2}\\0} + \alpha_1\myvec{1\\0\\\frac{1}{2}} + \alpha_2\myvec{0\\1\\\frac{1}{3}} &= \myvec{-1\\2\\-4}\\\label{eq8}
+	\alpha_1\myvec{1\\0\\\frac{1}{2}} + \alpha_2\myvec{0\\1\\\frac{1}{3}}  &= \myvec{-2\\\frac{5}{2}\\-4}\\\label{eq9}
+	\myvec{1 & 0\\0 & 1\\\frac{1}{2} & \frac{1}{3}} \myvec{\alpha_1 \\ \alpha_2} &=\myvec{-2\\\frac{5}{2}\\-4}\\\label{eq10}
+	\vec{M}\vec{x} &= \vec{b}\label{eq11}
+\intertext{Where,}
+    \vec{M} &= \myvec{1 & 0\\0 & 1\\\frac{1}{2} & \frac{1}{3}} \\
+    \vec{x} &= \myvec{\alpha_1 \\ \alpha_2} \\
+    \vec{b} &= \myvec{-2\\\frac{5}{2}\\-4}
 \end{align}
 Applying Singular Value Decomposition on $\vec{M}$,
 \begin{align} \label{eq:eq_6}
@@ -232,10 +246,10 @@ Where the columns of $\vec{V}$ are the eigenvectors of $\vec{M}^T\vec{M}$, the c
     \vec{M}^T \vec{M} &= \myvec{\tfrac{5}{4} & \tfrac{1}{6}  \\\tfrac{1}{6}  & \tfrac{10}{9} }\label{eq:eq_7} \\
     \vec{M} \vec{M}^T &= \myvec{1 & 0 & \frac{1}{2}\\ 0 & 1 & \frac{1}{3} \\ \tfrac{1}{2} & \tfrac{1}{3} & \tfrac{13}{36}} \label{eq:eq_8}
 \end{align}
-From \eqref{eq:eq_5} and \eqref{eq:eq_6},
+From \eqref{eq11} and \eqref{eq:eq_6},
 \begin{align}
-    \vec{U} \vec{S} \vec{V}^T \vec{x} = \vec{d} \nonumber \\
-    \implies \vec{x} = \vec{V} \vec{S_+} \vec{U^T} \vec{d} \label{eq:eq_9}
+    \vec{U} \vec{S} \vec{V}^T \vec{x} = \vec{b} \nonumber \\
+    \implies \vec{x} = \vec{V} \vec{S_+} \vec{U^T} \vec{b} \label{eq:eq_9}
 \end{align}
 Where $\vec{S_+}$ is Moore-Penrose Pseudo-Inverse of $\vec{S}$. Calculating eigenvalues of $\vec{M}\vec{M}^T$,
 \begin{align}
@@ -299,31 +313,42 @@ Moore-Penrose Pseudo inverse of $\vec{S}$ is given by,
 \end{align}
 From \eqref{eq:eq_9},
 \begin{align}
-    \vec{U}^T\vec{d} &= \myvec{\tfrac{-46}{7\sqrt{13}} \\ 
-    \tfrac{8}{\sqrt{13}} \\ \tfrac{-25}{7}} \nonumber \\
-    \vec{S_+}\vec{U}^T\vec{d} &= \myvec{\frac{-276}{49\sqrt{13}} \\ \frac{8}{\sqrt{13}}} \nonumber \\
-    \vec{x} = \vec{V}\vec{S_+}\vec{U}^T\vec{d} &= \myvec{\frac{-124}{49} \\ \frac{48}{49}} \label{eq:eq_19}
+    \vec{U}^T\vec{b} &= \myvec{\tfrac{-58}{7\sqrt{13}} \\ 
+    \tfrac{23}{2\sqrt{13}} \\ \tfrac{-23}{7}} \nonumber \\
+    \vec{S_+}\vec{U}^T\vec{d} &= \myvec{\frac{-348}{49\sqrt{13}} \\ \frac{23}{2\sqrt{13}}} \nonumber \\
+    \vec{x} = \vec{V}\vec{S_+}\vec{U}^T\vec{d} &= \boxed{\myvec{\frac{-167}{49} \\ \frac{153}{98}}} \label{eq:eq_19}
 \end{align}
 To verify the value of $\vec{x}$ obtained from \eqref{eq:eq_19},
 \begin{align} \label{eq:eq_20}
-    \vec{M}^T\vec{M}\vec{x} = \vec{M}^T\vec{d}
+    \vec{M}^T\vec{M}\vec{x} = \vec{M}^T\vec{b}
 \end{align}
 Substituting the values from \eqref{eq:eq_7} in \eqref{eq:eq_20},
 \begin{align}
-    \myvec{\frac{5}{4} & \frac{1}{6} \\\frac{1}{6} & \frac{10}{9}}\vec{x} = \myvec{-3 \\ \frac{2}{3}} \nonumber
+    \myvec{\frac{5}{4} & \frac{1}{6} \\\frac{1}{6} & \frac{10}{9}}\vec{x} = \myvec{-4 \\ \frac{7}{6}} \nonumber
 \end{align}
 Converting the above equation into augmented form and solving for $\vec{x}$,
 \begin{align}
-    \myvec{\frac{5}{4} & \frac{1}{6} & -3\\ \frac{1}{6} & \frac{10}{9} & \frac{2}{3}}\nonumber\\ 
+    \myvec{\frac{5}{4} & \frac{1}{6} & -4\\ \frac{1}{6} & \frac{10}{9} &\frac{7}{6}}\nonumber\\ 
     \xleftrightarrow[]{R_1 \leftarrow \frac{4}{5}R_1} 
-    \myvec{1 & \frac{2}{15} & \frac{-12}{5} \\ \frac{1}{6} & \frac{10}{9} & \frac{2}{3}} \nonumber \\ 
-    \xleftrightarrow[]{R_2 \leftarrow R_2-\frac{1}{6}R_1} \myvec{1 & \frac{2}{15} & \frac{-12}{5} \\ 0 & \frac{49}{45} & \frac{16}{15}}\nonumber\\
-    \xleftrightarrow[]{R_2 \leftarrow \frac{45}{49}R_2} \myvec{1 & \frac{2}{15} & \frac{-12}{5} \\ 0 & 1 & \frac{48}{49}}\nonumber\\
-    \xleftrightarrow[]{R_1 \leftarrow R_1-\frac{2}{15}R_2} \myvec{1 & 0 & \frac{-124}{49} \\ 0 & 1 & \frac{48}{49}}\label{eq:eq_22}
+    \myvec{1 & \frac{2}{15} & \frac{-16}{5} \\ \frac{1}{6} & \frac{10}{9} & \frac{7}{6}} \nonumber \\ 
+    \xleftrightarrow[]{R_2 \leftarrow R_2-\frac{1}{6}R_1} \myvec{1 & \frac{2}{15} & \frac{-12}{5} \\ 0 & \frac{49}{45} & \frac{17}{10}}\nonumber\\
+    \xleftrightarrow[]{R_2 \leftarrow \frac{45}{49}R_2} \myvec{1 & \frac{2}{15} & \frac{-12}{5} \\ 0 & 1 & \frac{153}{98}}\nonumber\\
+    \xleftrightarrow[]{R_1 \leftarrow R_1-\frac{2}{15}R_2} \myvec{1 & 0 & \frac{-167}{49} \\ 0 & 1 & \frac{153}{98}}\label{eq:eq_22}
 \end{align}
 From \eqref{eq:eq_22} it can be observed that,
 \begin{align} 
-    \vec{x} = \myvec{\frac{-124}{49} \\ \frac{48}{49}} 
+    \vec{x} = \myvec{\frac{-167}{49} \\ \frac{153}{98}} 
 \end{align}
-Hence verified.
+Hence verified.\\
+Thus, the point $\vec{Q}$ (foot of the perpendicular) can be obtained by putting values of $\alpha_1$ and $\alpha_2$ in \eqref{eq_25}:
+\begin{align}
+    \vec{Q} = \myvec{1\\\frac{-1}{2}\\0} + \frac{-167}{49}\myvec{1\\0\\\frac{1}{2}} +  \frac{153}{98}\myvec{0\\1\\\frac{1}{3}}\\
+    \boxed{\vec{Q} = \myvec{\tfrac{-118}{49}\\\tfrac{52}{49}\\\tfrac{-58}{49}}}
+\end{align}
+The distance between the point $D$ and the plane can be obtained as:
+\begin{align}
+    \norm{\vec{Q}-\vec{d}}=\sqrt{\brak{\tfrac{-118}{49}+1}^2+\brak{\tfrac{52}{49}-2}^2+\brak{\tfrac{-58}{49}+4}^2}\\
+    \boxed{\norm{\vec{Q}-\vec{d}}=\frac{23}{7}=3.2857} \label{eq_54}
+\end{align}
+Thus the distance obtained in equation \eqref{eq_20} by projection method is matches with the distance obtained in equation \eqref{eq_54}. Hence verified.
 \end{document}
