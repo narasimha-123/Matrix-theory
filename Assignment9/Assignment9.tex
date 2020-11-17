@@ -364,8 +364,83 @@ Now, the assumption of $\vec{A_{n+1}}$ being invertible will hold if and only if
 \begin{align}
 x_{n+1} &= \frac{1}{2n}-\myvec{\frac{1}{4}&\frac{1}{5}&\dots&\frac{1}{2n-1}}\vec{A_{n}^{-1}}\myvec{\frac{1}{4}\\\frac{1}{5}\\\dots\\\frac{1}{2n-1}} \label{eqX2}
 \end{align}
-In equation \eqref{eqX2} $\vec{u}$ contains no negative or zero entries, again $\vec{A_{n}^{-1}}$ has non zero integer entries, hence $\vec{u^T}\vec{A_{n}^{-1}}\vec{u}$ is a non zero scalar. Moreover $d$ is not equal to $\vec{u^T}\vec{A_{n}^{-1}}\vec{u}$ hence in \eqref{eqX2} $x$ is non-zero scalar and invertible and hence it has an inverse. Hence $\vec{A_{n+1}}$ is also invertible. 
-
+In equation \eqref{eqX2} $\vec{u}$ contains no negative or zero entries, again $\vec{A_{n}^{-1}}$ has non zero integer entries, hence $\vec{u^T}\vec{A_{n}^{-1}}\vec{u}$ is a non zero scalar. Moreover $d$ is not equal to $\vec{u^T}\vec{A_{n}^{-1}}\vec{u}$ hence in \eqref{eqX2} $x$ is non-zero scalar and invertible and hence it has an inverse. Hence $\vec{A_{n+1}}$ is also invertible. \newpage
+\textbf{Problem statement:} If $\vec{A_{n-1}^{-1}}$ is invertible and has integer values, Then $\vec{A_{n}^{-1}}$ also has integer values. \\\\
+\textbf{Proof:} \\
+The matrix $\vec{A_{n}^{-1}}$ can be expressed as:
+\begin{align}
+\vec{A_{n}} &= \myvec{\vec{A_{n-1}}&\vec{u}\\\vec{u^T}&d}\label{eqAn}
+\intertext{where,}
+\vec{u} &=  \myvec{\frac{1}{n} \\ \frac{1}{n+1} \\ \vdots \\ \frac{1}{2n-2}} \\
+d &= \frac{1}{2n-1}
+\end{align}
+The inverse of $\vec{A_{n}}$ can be written using block matrix inversion,
+\begin{mdframed}
+\textbf{Block matrix inversion} \\ \\
+If a matrix is partitioned into four blocks, it can be inverted blockwise as follows:
+{\scriptsize 
+\begin{gather}
+    \text{If } \vec{M}=
+    \myvec{\vec{A} &\vec{B} \\\vec{C} &\vec{D}} \text{ then,} \nonumber \\
+    \vec{M}^{-1}=\myvec{\vec {A} ^{-1}+\vec {A} ^{-1}\vec {B} \left(\vec {D} -\vec {CA} ^{-1}\vec {B} \right)^{-1}\vec {CA} ^{-1}&-\vec {A} ^{-1}\vec {B} \left(\vec {D} -\vec {CA} ^{-1}\vec {B} \right)^{-1}\\-\left(\vec {D} -\vec {CA} ^{-1}\vec {B} \right)^{-1}\vec {CA} ^{-1}&\left(\vec {D} -\vec {CA} ^{-1}\vec {B} \right)^{-1}}
+\end{gather}
+}%
+\end{mdframed}
+\begin{align}
+    \vec{{A_n}^{-1}} &= \myvec{\vec{A_{n-1}^{-1}}+\vec{A_{n-1}^{-1}}\vec{u}x_n^{-1}\vec{u^T}\vec{A_{n-1}^{-1}} & -\vec{A_{n-1}^{-1}}\vec{u}x_n^{-1}\\-x_n^{-1}\vec{u^T}\vec{A_{n-1}^{-1}} & x_n^{-1}}\\
+\intertext{where,}
+x_n &= d-\vec{u^T}\vec{A_{n-1}^{-1}}\vec{u}\label{eqX1}
+\end{align}
+For $\vec{A_{n}^{-1}}$ to have integer values, each of the four blocks in \eqref{eqX1} should have integer values.\\
+Let us first prove that $x_n^{-1}$ have integer values as follow:
+\begin{align}
+    x_n &= d-\vec{u^T}\vec{A_{n-1}^{-1}}\vec{u}\\
+    &=\frac{1}{2n-1}-\sum_i ^{n-1}\sum_j^{n-1} u_iu_j (A_{n-1}^{-1})_{ij}\\
+    &=\frac{1}{2n-1}-\sum_i ^{n-1}\sum_j^{n-1} \frac{1}{n+i-1}\frac{1}{n+j-1}(A_{n-1}^{-1})_{ij}
+\end{align}
+Thus, $x_n$ is a scalar of the form $\frac{p}{q}$. Also, by calculation, $x_2=\frac{1}{12}$, $x_3=\frac{1}{180}$ and $x_3=\frac{1}{2800}$. Thus, by induction, we can say $p=1$ for any value of $n$. Thus, $x_n^{-1}$ can be written as:
+\begin{align}
+    x_n^{-1}=\frac{1}{x_n}=\frac{q}{p}
+\end{align}
+Since, $p=1$ for any value of $n$, Hence $x_n^{-1}=q$ is always integer.\\ \\
+Now, let us consider the block $-\vec{A_{n-1}^{-1}}\vec{u}x_n^{-1}$, we can write:
+\begin{align}
+   (-\vec{A_{n-1}^{-1}}\vec{u}x_n^{-1})_{i,1}= -q\sum_j ^{n-1}\frac{1}{n+j-1}(A_{n-1}^{-1})_{i,j}
+\end{align}
+Here, the considered block is a $(n-1) \times 1$ matrix, with each element of rational form $\frac{p_1}{q_1}$. For $n=2,3,4$ the value of $q_1$ comes as $1$. Thus by induction, the value of $q_1$ is always $1$ for any value of $n$. Hence, this matrix always has integer values. \\\\
+Now, let us consider the block $-x_n^{-1}\vec{u}^T\vec{A_{n-1}^{-1}}$, we can write:
+\begin{align}
+   (-x_n^{-1}\vec{u}^T\vec{A_{n-1}^{-1}})_{1,j}= -q\sum_i ^{n-1}\frac{1}{n+i-1}(A_{n-1}^{-1})_{i,j}
+\end{align}
+Here, the considered block is a $1 \times (n-1)$ matrix, with each element of rational form $\frac{p_2}{q_2}$. For $n=2,3,4$ the value of $q_2$ comes as $1$. Thus by induction, the value of $q_2$ is always $1$ for any value of $n$. Hence, this matrix always has integer values. \\\\
+Considering the block $\vec{A_{n-1}^{-1}}+\vec{A_{n-1}^{-1}}\vec{u}x_n^{-1}\vec{u^T}\vec{A_{n-1}^{-1}}$, let denote it as $V_{n-1}^{-1}$:
+\begin{align}
+    V_{n-1}^{-1}&=\vec{A_{n-1}^{-1}}+\vec{A_{n-1}^{-1}}\vec{u}x_n^{-1}\vec{u^T}\vec{A_{n-1}^{-1}}\\
+    &=\vec{A_{n-1}^{-1}}+\vec{A_{n-1}^{-1}}\vec{u}\brak{d-\vec{u^T}\vec{A_{n-1}^{-1}}\vec{u}}^{-1}\vec{u^T}\vec{A_{n-1}^{-1}} \label{eq52}
+\end{align}
+The Woodbury matrix identity is given by:
+\begin{align}
+    \boxed{\left(A+UCV\right)^{-1}=A^{-1}-A^{-1}U\left(C^{-1}+VA^{-1}U\right)^{-1}VA^{-1}} \label{eq53}
+\end{align}
+Comparing \eqref{eq52} and \eqref{eq53}, we can write:
+\begin{align}
+    V_{n-1}^{-1}=\brak{A_{n-1}-(2n-1)\vec{u}\vec{u}^T}^{-1}\\
+    \therefore  V_{n-1}=A_{n-1}-(2n-1)\vec{u}\vec{u}^T
+\end{align}
+Here, $V_{n-1}$ can be expanded as:
+\begin{align}
+    V_{n-1}&=A_{n-1}-(2n-1)\vec{u}\vec{u}^T\\
+    &=\frac{1}{i+j-1}-\frac{(2n-1)}{(n+i-1)(n+j-1)}\\
+    &=\frac{n^2-ni-nj-ij}{(i+j-1)(n+i-1)(n+j-1)}\\
+    &=\frac{(n-i)(n-j)}{(i+j-1)(n+i-1)(n+j-1)}\\
+    \therefore (V_{n-1})_{ij}&=\brak{(A_{n-1})_{ij}\frac{(n-i)(n-j)}{(n+i-1)(n+j-1)}} \label{eq60}
+\end{align}
+Using \eqref{eq60}, The inverse $V_{n-1}^{-1}$ can be written as:
+\begin{align}
+    (V_{n-1}^{-1})_{ij}&=\brak{(A_{n-1}^{-1})_{ij}\frac{(n+i-1)(n+j-1)}{(n-i)(n-j)}}
+\end{align}
+Here, the considered block is a $(n-1) \times (n-1)$ matrix, with each element of rational form $\frac{p_3}{q_3}$. For $n=2,3,4$ the value of $q_3$ comes as $1$. Thus by induction, the value of $q_3$ is always $1$ for any value of $n$. Hence, this matrix always has integer values.\\
+Since, all the four blocks has integer values, the inverse $A_n^{-1}$ has integer values.
 \section{\textbf{Observations:}} 
 \begin{enumerate}
     \item The given matrix is a $n\times n$ Hilbert matrix. Which is always invertible with its inverse having integer values.
