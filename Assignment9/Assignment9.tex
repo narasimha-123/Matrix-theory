@@ -153,7 +153,7 @@ https://github.com/sachinomdubey/Matrix-theory/Assignment9
 \underline{\textbf{Proof that A is Invertible.}}\\
 The elements of the given matrix is of the form:
 \begin{align}
-    A_{ij} = \frac{1}{i+j-1}= \int_{0}^{1}t^{i+j-2}dt= \int_{0}^{1}t^{i-1}t^{j-1}dt \label{eq2}
+    A_{ij} = \frac{1}{i+j-1}= \int_{0}^{1}t^{i+j-2}dt= \int_{0}^{1}t^{i-1}t^{j-1}dt \label{eq2.2}
 \end{align}
 We will prove that the matrix $\vec{A}$ is positive definite:\\
 $\vec{A}$ is Positive definite, if $\vec{X}\Vec{A}\vec{X}^T>0$
@@ -161,7 +161,7 @@ $\vec{A}$ is Positive definite, if $\vec{X}\Vec{A}\vec{X}^T>0$
    \text{Let } \vec{X}=(x_i)_{1\leq i\leq n} \in \mathbb{R}^N\\
    \vec{X}\Vec{A}\vec{X}^T=\sum_{1\leq i,j\leq n}\frac{x_ix_j}{i+j-1}
 \end{align}
-From \eqref{eq2},
+From \eqref{eq2.2},
 \begin{align}
    \vec{X}\Vec{A}\vec{X}^T &=\sum_{1\leq i,j\leq n}x_ix_j\int_0^1t^{i+j-2}dt\\
    &=\int_0^1\left(\sum_{i=1}^nx_it^{i-1}\right)\left(\sum_{j=1}^nx_jt^{j-1}\right)dt
@@ -191,19 +191,19 @@ P_2(x)=P_{21}+P_{22}x\\
 P_3(x)=P_{31}+P_{32}x+p_{33}x^2\\
 .\\.\\
 P_n(x)=P_{n1}+P_{n2}x+P_{n3}x^2+..+P_{nn}x^{n-1}
-\end{matrix}\right. \label{eq11}
+\end{matrix}\right. \label{eq2.11}
 \end{align}
 Where, the coefficients $P_{ij}$ are given as:
 \begin{align}
-P_{ij}=(-1)^{i+j-1} {j-1 \choose i-1} {i+j-2 \choose i-1} \label{eq12}
+P_{ij}=(-1)^{i+j-1} {j-1 \choose i-1} {i+j-2 \choose i-1} \label{eq2.12}
 \end{align}
 The shifted legendre polynomials are analogous to legendre polynomials, but defined on the interval $[0,1]$ (whereas the interval is $[-1,1]$ for legendre polynomial). \newpage
 A set of shifted legendre polynomials obey the following orthogonal relationship:
 \begin{align}
     \int_{0}^{1}P_i(x)P_j(x)dx=0\text{ for }i \neq j\\
-    \int_{0}^{1}P_i(x)P_j(x)dx=\frac{1}{2i+1}\text{ for }i=j \label{eq14}
+    \int_{0}^{1}P_i(x)P_j(x)dx=\frac{1}{2i+1}\text{ for }i=j \label{eq2.14}
 \end{align}
-Forming a matrix $\vec{P}$ whose elements are the coefficients of polynomials in \eqref{eq11}
+Forming a matrix $\vec{P}$ whose elements are the coefficients of polynomials in \eqref{eq2.11}
 \begin{align}
     \vec{P}=\myvec{P_{11} & 0 &.&.&0\\
     P_{21} & P_{22} &.&.&0\\
@@ -211,15 +211,15 @@ Forming a matrix $\vec{P}$ whose elements are the coefficients of polynomials in
 \end{align}
 Forming a matrix $\vec{P}\vec{A}\vec{P}^T$, the elements of the matrix $\vec{P}\vec{A}\vec{P}^T$ can be written as:
 \begin{align}
-    \vec{P}\vec{A}\vec{P}^T_{ij}&=\sum_{s=1}^N\sum_{r=1}^NP_{ir}P_{js}A_{rs} \label{eq15}
+    \vec{P}\vec{A}\vec{P}^T_{ij}&=\sum_{s=1}^N\sum_{r=1}^NP_{ir}P_{js}A_{rs} \label{eq2.15}
     \\
-    \intertext{From \eqref{eq2} with suitable change in variable notations, we can write:}
-    A_{rs}&=\int_0^1x^{r-1}x^{s-1}dx \label{eq16}\\
-    \intertext{From \eqref{eq15} and \eqref{eq16},}
+    \intertext{From \eqref{eq2.2} with suitable change in variable notations, we can write:}
+    A_{rs}&=\int_0^1x^{r-1}x^{s-1}dx \label{eq2.16}\\
+    \intertext{From \eqref{eq2.15} and \eqref{eq2.16},}
     \vec{P}\vec{A}\vec{P}^T_{ij}&=\int_0^1\sum_{s=1}^N\sum_{r=1}^NP_{ir}P_{js}x^{r-1}x^{s-1}dx\\
     &=\int_0^1\sum_{s=1}^NP_{ir}x^{r-1}\sum_{r=1}^NP_{js}x^{s-1}dx \\
     &=\int_0^1P_i(x)P_j(x)dx\\
-    \intertext{From \eqref{eq14}}
+    \intertext{From \eqref{eq2.14}}
     \vec{P}\vec{A}\vec{P}^T_{ij}&=
     \left\{\begin{matrix}
     0 & i\neq j\\ 
@@ -230,14 +230,14 @@ Thus, Matrix $\vec{P}\vec{A}\vec{P}^T$ is diagonal matrix:
 \begin{align}
     \vec{P}\vec{A}\vec{P}^T=\vec{D}=\myvec{\frac{1}{3} & 0 &.&.&0\\
     0 & \frac{1}{5} &.&.&0\\
-    .&.&.&.&.\\.&.&.&.&.\\0 &0 &.&.&\frac{1}{2n+1}} \label{eq22}
+    .&.&.&.&.\\.&.&.&.&.\\0 &0 &.&.&\frac{1}{2n+1}} \label{eq2.22}
 \end{align}
-From \eqref{eq22}, the inverse of matrix $\vec{A}$ can be written as:
+From \eqref{eq2.22}, the inverse of matrix $\vec{A}$ can be written as:
 \begin{align}
     \vec{A}=\vec{P}^{-1}\vec{D}(\vec{P}^T)^{-1}\\
     \implies \vec{A}^{-1}=\vec{P}^T\vec{D}^{-1}\vec{P}
 \end{align}
-From \eqref{eq12} and \eqref{eq22}, It can be clearly observed that the elements of matrix $\vec{P}$, $\vec{P}^T$ and $\vec{D}^{-1}$ are all integers given as:
+From \eqref{eq2.12} and \eqref{eq2.22}, It can be clearly observed that the elements of matrix $\vec{P}$, $\vec{P}^T$ and $\vec{D}^{-1}$ are all integers given as:
 \begin{align}
     \vec{P}_{ij}=(-1)^{i+j-1} {j-1 \choose i-1} {i+j-2 \choose i-1} \\
     \vec{D}^{-1}_{ij}=\frac{1}{\vec{D}_{ij}}=   \left\{\begin{matrix}
@@ -275,7 +275,7 @@ Now we find the inverse of the matrix $\vec{A_3}$ as follows,
 \end{align}
 Hence we see that $\vec{A_3}$ is invertible and the inverse contains integer entries and $\vec{A_3^{-1}}$ is given by,
 \begin{align}
-\vec{A_3^{-1}} = \myvec{9&-36&30\\-36&192&-180\\30&-180&180}\label{A3inv}
+\vec{A_3^{-1}} = \myvec{9&-36&30\\-36&192&-180\\30&-180&180}\label{eq8}
 \end{align}
 Let, $\vec{A_4}$ be $4 \times 4$ matrix as follows,
 \begin{align}
@@ -301,11 +301,11 @@ If a matrix is partitioned into four blocks, it can be inverted blockwise as fol
 }%
 \end{mdframed}
 \begin{align}
-\therefore \vec{A_4^{-1}} &= \myvec{\vec{A_3^{-1}}+\vec{A_3^{-1}}\vec{u}x_4^{-1}\vec{u^T}\vec{A_3^{-1}} & -\vec{A_3^{-1}}\vec{u}x_4^{-1}\\-x_4^{-1}\vec{u^T}\vec{A_3^{-1}} & x_4^{-1}}\label{eqblockinv}\\
+\therefore \vec{A_4^{-1}} &= \myvec{\vec{A_3^{-1}}+\vec{A_3^{-1}}\vec{u}x_4^{-1}\vec{u^T}\vec{A_3^{-1}} & -\vec{A_3^{-1}}\vec{u}x_4^{-1}\\-x_4^{-1}\vec{u^T}\vec{A_3^{-1}} & x_4^{-1}}\label{eq14}\\
 &=x_4^{-1} \myvec{\vec{A_3^{-1}}x_4+\vec{A_3^{-1}}\vec{u}\vec{u^T}\vec{A_3^{-1}} & -\vec{A_3^{-1}}\vec{u}\\\vec{u^T}\vec{A_3^{-1}} & 1}\\
-\text{where, }x_4 &= d-{\vec{u^T}\vec{A_3^{-1}}\vec{u}}\label{eqX}
+\text{where, }x_4 &= d-{\vec{u^T}\vec{A_3^{-1}}\vec{u}}\label{eq16}
 \end{align}
-Now, the assumption of $\vec{A_4}$ being invertible will hold if and only if $\vec{A_3}$ is invertible, which has been proved in \eqref{A3inv} and $x_4$ from \eqref{eqX} is invertible or $x_4$ is a nonzero scalar. We now prove that $x_4$ is invertible as follows,
+Now, the assumption of $\vec{A_4}$ being invertible will hold if and only if $\vec{A_3}$ is invertible, which has been proved in \eqref{eq8} and $x_4$ from \eqref{eq16} is invertible or $x_4$ is a nonzero scalar. We now prove that $x_4$ is invertible as follows,
 \begin{align}
 x_4 &= \frac{1}{7}-\myvec{\frac{1}{4}&\frac{1}{5}&\frac{1}{6}}\myvec{9&-36&30\\-36&192&-180\\30&-180&180}\myvec{\frac{1}{4} \\ \frac{1}{5} \\ \frac{1}{6}}\\
 \implies x_4 &= \frac{1}{2800}
@@ -314,12 +314,12 @@ x_4^{-1} &= 2800
 \end{align}
 Hence, $\vec{A_4}$ is invertible. Now putting the values of $\vec{A_3^{-1}}$, $x_4^{-1}$ and $\vec{u}$ we get,
 \begin{align}
-\vec{A_3^{-1}}+\vec{A_3^{-1}}\vec{u}x_4^{-1}\vec{u^T}\vec{A_3^{-1}} &= \myvec{16&-120&240\\-120&1200&-2700\\240&-2700&6480}\label{A1}\\
--\vec{A_3^{-1}}\vec{u}x_4^{-1} &= \myvec{-140\\1680\\-4200}\label{A2}\\
-x_4^{-1}\vec{u^T}\vec{A_3^{-1}} &= \myvec{-140&1680&-4200}\label{A3}\\
-x_4^{-1} &= 2800\label{A4}
+\vec{A_3^{-1}}+\vec{A_3^{-1}}\vec{u}x_4^{-1}\vec{u^T}\vec{A_3^{-1}} &= \myvec{16&-120&240\\-120&1200&-2700\\240&-2700&6480}\label{eq20}\\
+-\vec{A_3^{-1}}\vec{u}x_4^{-1} &= \myvec{-140\\1680\\-4200}\label{eq21}\\
+x_4^{-1}\vec{u^T}\vec{A_3^{-1}} &= \myvec{-140&1680&-4200}\label{eq22}\\
+x_4^{-1} &= 2800\label{eq23}
 \end{align}
-Putting values from \eqref{A1}, \eqref{A2}, \eqref{A3} and \eqref{A4} into \eqref{eqblockinv} we get,
+Putting values from \eqref{eq20}, \eqref{eq21}, \eqref{eq22} and \eqref{eq23} into \eqref{eq14} we get,
 \begin{align}
 \vec{A_4^{-1}} &= \myvec{16&-120&240&-140\\-120&1200&-2700&1680\\240&-2700&6480&-4200\\-140&1680&-4200&2800}\label{A4invfin}
 \end{align}
@@ -327,49 +327,49 @@ Hence, from \eqref{A4invfin} we proved that, $\vec{A_4}$ is invertible and has i
 By successively repeating this method, we can prove that $\vec{A_5}$, $\vec{A_6}$,$\vec{A_7}$,.... and so on, are invertible and have integer values.
 Thus, we can say, $\vec{A_{n-1}}$ will be invertible with integer entries. Then we can represent $\vec{A_{n}}$ as follows,
 \begin{align}
-\vec{A_{n}} &= \myvec{\vec{A_{n-1}}&\vec{u}\\\vec{u^T}&d}\label{eqAn}
+\vec{A_{n}} &= \myvec{\vec{A_{n-1}}&\vec{u}\\\vec{u^T}&d}\label{eq25}
 \intertext{where,}
 \vec{u} &=  \myvec{\frac{1}{4} \\ \frac{1}{5} \\ \vdots \\ \frac{1}{2n-2}} \\
 d &= \frac{1}{2n-1}
 \end{align}
-Now assuming $\vec{A_{n}}$ has an inverse, then from \eqref{eqAn}, the inverse of $\vec{A_n}$ can be written using block matrix inversion as follows,
+Now assuming $\vec{A_{n}}$ has an inverse, then from \eqref{eq25}, the inverse of $\vec{A_n}$ can be written using block matrix inversion as follows,
 \begin{align}
 \vec{{A_n}^{-1}} &= \myvec{\vec{A_{n-1}^{-1}}+\vec{A_{n-1}^{-1}}\vec{u}x_n^{-1}\vec{u^T}\vec{A_{n-1}^{-1}} & -\vec{A_{n-1}^{-1}}\vec{u}x_n^{-1}\\-x_n^{-1}\vec{u^T}\vec{A_{n-1}^{-1}} & x_n^{-1}}\\
-&= x_n^{-1}\myvec{x_n\vec{A_{n-1}^{-1}}+\vec{A_{n-1}^{-1}}\vec{u^T}\vec{A_{n-1}^{-1}} & -\vec{A_{n-1}^{-1}}\vec{u}\\-\vec{u^T}\vec{A_{n-1}^{-1}} &1}\label{eqblockinv1}
+&= x_n^{-1}\myvec{x_n\vec{A_{n-1}^{-1}}+\vec{A_{n-1}^{-1}}\vec{u^T}\vec{A_{n-1}^{-1}} & -\vec{A_{n-1}^{-1}}\vec{u}\\-\vec{u^T}\vec{A_{n-1}^{-1}} &1}
 \intertext{where,}
-x_n &= d-\vec{u^T}\vec{A_{n-1}^{-1}}\vec{u}\label{eqX1}
+x_n &= d-\vec{u^T}\vec{A_{n-1}^{-1}}\vec{u}\label{eq30}
 \end{align}
-Now, the assumption of $\vec{A_n}$ being invertible will hold if and only if $\vec{A_{n-1}}$ is invertible, which is intuitively proved and $x$ from \eqref{eqX1} is invertible or $x_n$ is a nonzero scalar. We now prove that $x_n$ is invertible as follows,
+Now, the assumption of $\vec{A_n}$ being invertible will hold if and only if $\vec{A_{n-1}}$ is invertible, which is intuitively proved and $x$ from \eqref{eq30} is invertible or $x_n$ is a nonzero scalar. We now prove that $x_n$ is invertible as follows,
 \begin{align}
-x_n &= \frac{1}{2n-1}-\myvec{\frac{1}{4}&\frac{1}{5}&\dots&\frac{1}{2n-2}}\vec{A_{n-1}^{-1}}\myvec{\frac{1}{4}\\\frac{1}{5}\\\dots\\\frac{1}{2n-2}} \label{eqX2}
+x_n &= \frac{1}{2n-1}-\myvec{\frac{1}{4}&\frac{1}{5}&\dots&\frac{1}{2n-2}}\vec{A_{n-1}^{-1}}\myvec{\frac{1}{4}\\\frac{1}{5}\\\dots\\\frac{1}{2n-2}} \label{eq31}
 \end{align}
-In equation \eqref{eqX2} $\vec{u}$ contains no negative or zero entries, again $\vec{A_{n-1}^{-1}}$ has non zero integer entries, hence $\vec{u^T}\vec{A_{n-1}^{-1}}\vec{u}$ is a non zero scalar. Moreover $d$ is not equal to $\vec{u^T}\vec{A_{n-1}^{-1}}\vec{u}$ hence in \eqref{eqX2} $x$ is non-zero scalar and invertible and hence it has an inverse. Hence $\vec{A_n}$ is invertible, proved.
+In equation \eqref{eq31} $\vec{u}$ contains no negative or zero entries, again $\vec{A_{n-1}^{-1}}$ has non zero integer entries, hence $\vec{u^T}\vec{A_{n-1}^{-1}}\vec{u}$ is a non zero scalar. Moreover $d$ is not equal to $\vec{u^T}\vec{A_{n-1}^{-1}}\vec{u}$ hence in \eqref{eq31} $x$ is non-zero scalar and invertible and hence it has an inverse. Hence $\vec{A_n}$ is invertible, proved.
 \\ \\
 \textbf{Proof for $\vec{A}_{n+1}$:}\\
 Expressing $\vec{A}_{n+1}$ using $\vec{A}_{n}$ we get:
 \begin{align}
-\vec{A_{n+1}} &= \myvec{\vec{A_{n}}&\vec{u}\\\vec{u^T}&d}\label{eqAn}
+    \vec{A_{n+1}} &= \myvec{\vec{A_{n}}&\vec{u}\\\vec{u^T}&d} \label{eq32}
 \intertext{where,}
 \vec{u} &=  \myvec{\frac{1}{4} \\ \frac{1}{5} \\ \vdots \\ \frac{1}{2n-1}} \\
 d &= \frac{1}{2n}
 \end{align}
-Now assuming $\vec{A_{n+1}}$ has an inverse, then from \eqref{eqAn}, the inverse of $\vec{A_{n+1}}$ can be written using block matrix inversion as follows,
+Now assuming $\vec{A_{n+1}}$ has an inverse, then from \eqref{eq32}, the inverse of $\vec{A_{n+1}}$ can be written using block matrix inversion as follows,
 \begin{align}
 \vec{{A_{n+1}}^{-1}} &= \myvec{\vec{A_{n}^{-1}}+\vec{A_{n}^{-1}}\vec{u}x_{n+1}^{-1}\vec{u^T}\vec{A_{n}^{-1}} & -\vec{A_{n}^{-1}}\vec{u}x_{n+1}^{-1}\\-x_{n+1}^{-1}\vec{u^T}\vec{A_{n}^{-1}} & x_{n+1}^{-1}}\\
-&= x_{n+1}^{-1}\myvec{x_{n+1}\vec{A_{n}^{-1}}+\vec{A_{n}^{-1}}\vec{u^T}\vec{A_{n}^{-1}} & -\vec{A_{n}^{-1}}\vec{u}\\-\vec{u^T}\vec{A_{n}^{-1}} &1}\label{eqblockinv1}
+&= x_{n+1}^{-1}\myvec{x_{n+1}\vec{A_{n}^{-1}}+\vec{A_{n}^{-1}}\vec{u^T}\vec{A_{n}^{-1}} & -\vec{A_{n}^{-1}}\vec{u}\\-\vec{u^T}\vec{A_{n}^{-1}} &1}
 \intertext{where,}
-x_{n+1} &= d-\vec{u^T}\vec{A_{n}^{-1}}\vec{u}\label{eqX1}
+x_{n+1} &= d-\vec{u^T}\vec{A_{n}^{-1}}\vec{u}\label{eq37}
 \end{align}
-Now, the assumption of $\vec{A_{n+1}}$ being invertible will hold if and only if $\vec{A_{n}}$ is invertible, which is proved and $x$ from \eqref{eqX1} is invertible or $x_{n+1}$ is a nonzero scalar. We now prove that $x_{n+1}$ is invertible as follows,
+Now, the assumption of $\vec{A_{n+1}}$ being invertible will hold if and only if $\vec{A_{n}}$ is invertible, which is proved and $x$ from \eqref{eq37} is invertible or $x_{n+1}$ is a nonzero scalar. We now prove that $x_{n+1}$ is invertible as follows,
 \begin{align}
-x_{n+1} &= \frac{1}{2n}-\myvec{\frac{1}{4}&\frac{1}{5}&\dots&\frac{1}{2n-1}}\vec{A_{n}^{-1}}\myvec{\frac{1}{4}\\\frac{1}{5}\\\dots\\\frac{1}{2n-1}} \label{eqX2}
+x_{n+1} &= \frac{1}{2n}-\myvec{\frac{1}{4}&\frac{1}{5}&\dots&\frac{1}{2n-1}}\vec{A_{n}^{-1}}\myvec{\frac{1}{4}\\\frac{1}{5}\\\dots\\\frac{1}{2n-1}} \label{eq38}
 \end{align}
-In equation \eqref{eqX2} $\vec{u}$ contains no negative or zero entries, again $\vec{A_{n}^{-1}}$ has non zero integer entries, hence $\vec{u^T}\vec{A_{n}^{-1}}\vec{u}$ is a non zero scalar. Moreover $d$ is not equal to $\vec{u^T}\vec{A_{n}^{-1}}\vec{u}$ hence in \eqref{eqX2} $x$ is non-zero scalar and invertible and hence it has an inverse. Hence $\vec{A_{n+1}}$ is also invertible. \newpage
+In equation \eqref{eq38} $\vec{u}$ contains no negative or zero entries, again $\vec{A_{n}^{-1}}$ has non zero integer entries, hence $\vec{u^T}\vec{A_{n}^{-1}}\vec{u}$ is a non zero scalar. Moreover $d$ is not equal to $\vec{u^T}\vec{A_{n}^{-1}}\vec{u}$ hence in \eqref{eq38} $x$ is non-zero scalar and invertible and hence it has an inverse. Hence $\vec{A_{n+1}}$ is also invertible. \newpage
 \textbf{Problem statement:} If $\vec{A_{n-1}^{-1}}$ is invertible and has integer values, Then $\vec{A_{n}^{-1}}$ also has integer values. \\\\
 \textbf{Proof:} \\
 The matrix $\vec{A_{n}^{-1}}$ can be expressed as:
 \begin{align}
-\vec{A_{n}} &= \myvec{\vec{A_{n-1}}&\vec{u}\\\vec{u^T}&d}\label{eqAn}
+\vec{A_{n}} &= \myvec{\vec{A_{n-1}}&\vec{u}\\\vec{u^T}&d}
 \intertext{where,}
 \vec{u} &=  \myvec{\frac{1}{n} \\ \frac{1}{n+1} \\ \vdots \\ \frac{1}{2n-2}} \\
 d &= \frac{1}{2n-1}
@@ -387,11 +387,11 @@ If a matrix is partitioned into four blocks, it can be inverted blockwise as fol
 }%
 \end{mdframed}
 \begin{align}
-    \vec{{A_n}^{-1}} &= \myvec{\vec{A_{n-1}^{-1}}+\vec{A_{n-1}^{-1}}\vec{u}x_n^{-1}\vec{u^T}\vec{A_{n-1}^{-1}} & -\vec{A_{n-1}^{-1}}\vec{u}x_n^{-1}\\-x_n^{-1}\vec{u^T}\vec{A_{n-1}^{-1}} & x_n^{-1}}\\
+    \vec{{A_n}^{-1}} &= \myvec{\vec{A_{n-1}^{-1}}+\vec{A_{n-1}^{-1}}\vec{u}x_n^{-1}\vec{u^T}\vec{A_{n-1}^{-1}} & -\vec{A_{n-1}^{-1}}\vec{u}x_n^{-1}\\-x_n^{-1}\vec{u^T}\vec{A_{n-1}^{-1}} & x_n^{-1}}\label{eq43}\\
 \intertext{where,}
-x_n &= d-\vec{u^T}\vec{A_{n-1}^{-1}}\vec{u}\label{eqX1}
+x_n &= d-\vec{u^T}\vec{A_{n-1}^{-1}}\vec{u}
 \end{align}
-For $\vec{A_{n}^{-1}}$ to have integer values, each of the four blocks in \eqref{eqX1} should have integer values.\\
+For $\vec{A_{n}^{-1}}$ to have integer values, each of the four blocks in \eqref{eq43} should have integer values.\\
 Let us first prove that $x_n^{-1}$ have integer values as follow:
 \begin{align}
     x_n &= d-\vec{u^T}\vec{A_{n-1}^{-1}}\vec{u}\\
