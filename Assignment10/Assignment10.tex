@@ -1,0 +1,224 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+
+\usepackage{setspace}
+\usepackage{gensymb}
+\singlespacing
+\usepackage[cmex10]{amsmath}
+
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{bm}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{subfig}
+
+\usepackage{longtable}
+\usepackage{multirow}
+
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{steinmetz}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{verbatim}
+\usepackage{tfrupee}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{graphicx}
+\usepackage{tkz-euclide}
+
+\usetikzlibrary{calc,math}
+\usepackage{listings}
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
+    \usepackage{lscape}     
+\usepackage{multicol}
+\usepackage{chngcntr}
+
+\DeclareMathOperator*{\Res}{Res}
+
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+\def\inputGnumericTable{}                                 %%
+
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+\begin{document}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}[problem]{Definition}
+
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\bibliographystyle{IEEEtran}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+%\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\mean}[1]{E\left[ #1 \right]}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+%\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
+\providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
+	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\cosec}{\,\text{cosec}\,}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\numberwithin{equation}{subsection}
+
+\makeatletter
+\@addtoreset{figure}{problem}
+\makeatother
+\let\StandardTheFigure\thefigure
+\let\vec\mathbf
+
+\renewcommand{\thefigure}{\theproblem}
+
+\def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
+     \def\rightbox#1{\makebox[0in][r]{#1}}
+     \def\centbox#1{\makebox[0in]{#1}}
+     \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
+     \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
+\vspace{3cm}
+\title{Assignment 10}
+\author{Sachinkumar Dubey - EE20MTECH11009}
+\maketitle
+\newpage
+\bigskip
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+%
+Download the latex-tikz codes from 
+%
+\begin{lstlisting}
+https://github.com/sachinomdubey/Matrix-theory/Assignment10
+\end{lstlisting}
+\section{Problem}
+(Hoffman/Page123/8) : 
+%
+If $F$ is a field and $h$ is a polynomial over $F$ of degree $\geq 1$,  show that the mapping $f \rightarrow f(h)$ is a one-one linear transformation of $F[x]$ into $F[x]$. Show that this transformation is an isomorphism of $F[x]$ onto $F[x]$ if and only if deg $h = 1$. 
+\section{Solution}
+Here, $F[x]$ is a set of polynomials over field $F$, written as:
+\begin{align}
+    F[x]&=\left \{\sum_{i=0}^\infty a_ix^i\quad \mid \quad a_i\in F\right \}
+\end{align}
+Let,
+\begin{align}
+    G(f)&=f(h) \label{eq1.1}
+\end{align}
+Thus, $G(f)$ is clearly a function from $F[x]$ into $F[x]$.\\
+Now, we need to show that the function $G$ is one-one linear transformation. Let us first show that $G$ is a linear transformation:
+\begin{align}
+    \text{Let, }f,g \in F[x] \text{ and }\alpha \in F \nonumber
+\end{align}
+\begin{align}
+    G(\alpha f+g)&=(\alpha f+g)(h) \nonumber\\
+    &=(\alpha f)(h)+g(h)\nonumber \\
+    &=\alpha f(h)+g(h)\nonumber \\
+    &=\alpha G(f)+G(g) \label{eq2.3} 
+\end{align}
+From \eqref{eq2.3}, $G$ is a linear transformation. \\
+%
+For $G$ to be one-one linear transformation, it should map a set of linearly independent polynomials in $F(x)$ to another  set of linearly independent polynomials in $F(x)$. let us consider the following basis set for $F(x)$:
+\begin{align}
+    S&=\{f_0,f_1,f_2,f_3,f_4,\hdots\}
+    \intertext{Where,}
+    f_i&=x^i
+\end{align}
+Since, the set $S$ forms the basis for $F(x)$, the set $S$ is a set of linearly independent polynomials. Let us apply the transformation $G$ to set S, then we obtain another set $S'$ as:
+\begin{align}
+    S'&=\{f_0(h),f_1(h),f_2(h),f_3(h),f_4(h),\hdots\}
+    \intertext{Where,}
+    f_i&=x^i
+\end{align}
+Here, The degree of each polynomial in set $S'$ is distinct and given by $i\cdot$deg$(h)$. Thus, set $S'$ is also a set of linearly independent polynomials.\\ \\
+\textbf{Conclusion:} $G$ will maps any arbitrary set $S_a$ of linearly independent polynomials in $F(x)$ to another set $S_a'$ of linearly independent polynomials in $F(x)$. (Since any arbitrary set $S_a$ can be written in terms of basis set $S$). Hence, \underline{G is one-one linear transformation}.\\\\
+Now, Let us prove that $G$ is an isomorphism of $F(x)$ onto $F(x)$ if and only if deg$(h)=1$. \\
+Let deg$(h)=1$, then $h$ can be written as:
+\begin{align}
+    h=a+bx, \quad \text{Where, }b \ne 0
+\end{align}
+Let us define $h'$ such that:
+\begin{align}
+    h'=\frac1bx-\frac ab
+\end{align}
+Let $G'$ be the linear transformation from $F(x)$ to $F(x)$ given by:
+\begin{align}
+    G’(f)=f\brak{\frac1bx-\frac ab}
+\end{align}
+It can be shown that $G'$ is inverse of $G$ as follow:
+\begin{align}
+    G(G'(f))&=G\brak{f\brak{\frac1bx-\frac ab}}\\
+    &=f\brak{a\brak{\frac1ax-\frac ba}+b}\\
+    &=f(x)
+\end{align}
+Similarly, 
+\begin{align}
+    G'(G(f))&=G'\brak{f\brak{ax+b}}\\
+    &=f\brak{\frac1a\brak{ax+b}-\frac ba}\\
+    &=f(x)
+\end{align}
+Thus, $G'$ is inverse of $G$. Therefore, $G$ is isomorphism and we can say: 
+\begin{align}
+    \boxed{\deg(h)=1 \implies \text{$G$ is isomorphism.}} \label{eq16}
+\end{align}
+Let deg$(h)>1$, then 
+\begin{align}
+    \deg f(h)&=\deg f\cdot \deg h \\
+    \implies \deg f(h)&\geq 1\\
+    \implies G(f)=f(H) &\ne x
+\end{align}
+This means the image of $G$ does not contain polynomials of degree one. Hence $G$ is not onto and therefore $G$ can not be an isomorphism. Thus we can write:
+\begin{align}
+    \boxed{\deg(h)>1 \implies \text{$G$ is not isomorphism.}} \label{eq20} 
+\end{align}
+From \eqref{eq16} and \eqref{eq20}, We can conclude:
+\begin{align}
+    \boxed{\text{$G$ is isomorphism.} \iff \deg(h)=1}  
+\end{align}
+\end{document}
