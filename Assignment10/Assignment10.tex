@@ -1,10 +1,15 @@
 \documentclass[journal,12pt,twocolumn]{IEEEtran}
-
+\usepackage{longtable}
 \usepackage{setspace}
 \usepackage{gensymb}
 \singlespacing
 \usepackage[cmex10]{amsmath}
-
+\newcommand\myemptypage{
+	\null
+	\thispagestyle{empty}
+	\addtocounter{page}{-1}
+	\newpage
+}
 \usepackage{amsthm}
 \usepackage{mdframed}
 \usepackage{mathrsfs}
@@ -142,83 +147,123 @@ https://github.com/sachinomdubey/Matrix-theory/Assignment10
 (Hoffman/Page123/8) : 
 %
 If $F$ is a field and $h$ is a polynomial over $F$ of degree $\geq 1$,  show that the mapping $f \rightarrow f(h)$ is a one-one linear transformation of $F[x]$ into $F[x]$. Show that this transformation is an isomorphism of $F[x]$ onto $F[x]$ if and only if deg $h = 1$. 
+\section{Definition and Result used}
+\begin{table}[h!]
+	\begin{longtable}{|l|l|}
+		\hline
+		\multirow{3}{*}{Linear Transformation} 
+		& \\
+		& A Transformation $T(x)$ from $V \rightarrow W$ is said to be linear if it satisfies \\
+		&the following:\\
+		&\\
+		& \qquad $T(ax+y)=aT(x)+T(y)$ \\
+		& \qquad where, $x, y \in V$ and $a \in F$.\\
+		& \\
+		\hline
+		\multirow{3}{*}{One to one transformation} & \\
+		& A transformation $T(x)$ from $V\rightarrow W$ is one to one, if: \\
+		& \qquad $T(x_1)=T(x_2) \implies x_1=x_2$ \\
+	    & i.e. The mapping is unique.\\
+	    & \\
+	    \hline
+	    \multirow{3}{*}{Isomorphism} & \\
+		& A transformation $T(x)$ from $V\rightarrow W$ is isomorphism of $V$ onto $W$, if there \\
+		& exists an inverse $T'(x)$ of $T(x)$ such that $T'T(x)=TT'(x)=x$\\
+	    & \\
+	    \hline
+	    \multirow{3}{*}{Degree of  a polynomial} & \\
+		& The degree of a polynomial $p(x)$ is the highest power of $x$ in the \\
+	    & polynomial $p(x)$.\\
+	    &\\
+	    \hline
+	\end{longtable}
+\end{table}
 \section{Solution}
-Here, $F[x]$ is a set of polynomials over field $F$, written as:
-\begin{align}
-    F[x]&=\left \{\sum_{i=0}^\infty a_ix^i\quad \mid \quad a_i\in F\right \}
-\end{align}
-Let,
-\begin{align}
-    G(f)&=f(h) \label{eq1.1}
-\end{align}
-Thus, $G(f)$ is clearly a function from $F[x]$ into $F[x]$.\\
-Now, we need to show that the function $G$ is one-one linear transformation. Let us first show that $G$ is a linear transformation:
-\begin{align}
-    \text{Let, }f,g \in F[x] \text{ and }\alpha \in F \nonumber
-\end{align}
-\begin{align}
-    G(\alpha f+g)&=(\alpha f+g)(h) \nonumber\\
-    &=(\alpha f)(h)+g(h)\nonumber \\
-    &=\alpha f(h)+g(h)\nonumber \\
-    &=\alpha G(f)+G(g) \label{eq2.3} 
-\end{align}
-From \eqref{eq2.3}, $G$ is a linear transformation. \\
-%
-For $G$ to be one-one linear transformation, it should map a set of linearly independent polynomials in $F(x)$ to another  set of linearly independent polynomials in $F(x)$. let us consider the following basis set for $F(x)$:
-\begin{align}
-    S&=\{f_0,f_1,f_2,f_3,f_4,\hdots\}
-    \intertext{Where,}
-    f_i&=x^i
-\end{align}
-Since, the set $S$ forms the basis for $F(x)$, the set $S$ is a set of linearly independent polynomials. Let us apply the transformation $G$ to set S, then we obtain another set $S'$ as:
-\begin{align}
-    S'&=\{f_0(h),f_1(h),f_2(h),f_3(h),f_4(h),\hdots\}
-    \intertext{Where,}
-    f_i&=x^i
-\end{align}
-Here, The degree of each polynomial in set $S'$ is distinct and given by $i\cdot$deg$(h)$. Thus, set $S'$ is also a set of linearly independent polynomials.\\ \\
-\textbf{Conclusion:} $G$ will maps any arbitrary set $S_a$ of linearly independent polynomials in $F(x)$ to another set $S_a'$ of linearly independent polynomials in $F(x)$. (Since any arbitrary set $S_a$ can be written in terms of basis set $S$). Hence, \underline{G is one-one linear transformation}.\\\\
-Now, Let us prove that $G$ is an isomorphism of $F(x)$ onto $F(x)$ if and only if deg$(h)=1$. \\
-Let deg$(h)=1$, then $h$ can be written as:
-\begin{align}
-    h=a+bx, \quad \text{Where, }b \ne 0
-\end{align}
-Let us define $h'$ such that:
-\begin{align}
-    h'=\frac1bx-\frac ab
-\end{align}
-Let $G'$ be the linear transformation from $F(x)$ to $F(x)$ given by:
-\begin{align}
-    G’(f)=f\brak{\frac1bx-\frac ab}
-\end{align}
-It can be shown that $G'$ is inverse of $G$ as follow:
-\begin{align}
-    G(G'(f))&=G\brak{f\brak{\frac1bx-\frac ab}}\\
-    &=f\brak{a\brak{\frac1ax-\frac ba}+b}\\
-    &=f(x)
-\end{align}
-Similarly, 
-\begin{align}
-    G'(G(f))&=G'\brak{f\brak{ax+b}}\\
-    &=f\brak{\frac1a\brak{ax+b}-\frac ba}\\
-    &=f(x)
-\end{align}
-Thus, $G'$ is inverse of $G$. Therefore, $G$ is isomorphism and we can say: 
-\begin{align}
-    \boxed{\deg(h)=1 \implies \text{$G$ is isomorphism.}} \label{eq16}
-\end{align}
-Let deg$(h)>1$, then 
-\begin{align}
-    \deg f(h)&=\deg f\cdot \deg h \\
-    \implies \deg f(h)&\geq 1\\
-    \implies G(f)=f(h) &\ne x
-\end{align}
-This means the image of $G$ does not contain polynomials of degree one. Hence $G$ is not onto and therefore $G$ can not be an isomorphism. Thus we can write:
-\begin{align}
-    \boxed{\deg(h)>1 \implies \text{$G$ is not isomorphism.}} \label{eq20} 
-\end{align}
-From \eqref{eq16} and \eqref{eq20}, We can conclude:
-\begin{align}
-    \boxed{\text{$G$ is isomorphism.} \iff \deg(h)=1}  
-\end{align}
+\onecolumn
+	\begin{longtable}{|l|l|}
+		\hline
+		\multirow{3}{*}{Proving that the given} 
+		& \\
+		& Here, $F[x]$ is a set of polynomials over field $F$, written as:\\ mapping is linear.
+		&\\
+		& \qquad \qquad \qquad $F[x]=\left \{\sum_{i=0}^\infty a_ix^i\quad \mid \quad a_i\in F\right \}$\\
+		&\\
+		& Let the mapping $f \rightarrow f(h)$ represented as: \\
+		&\\
+		&\qquad \qquad \qquad $G(f)=f(h)$\\
+		&\\
+		& Thus, $G(f)$ is clearly a function from $F[x]$ into $F[x]$.\\
+		& Let, $f,g \in F[x]$ and $\alpha \in F$\\
+		&\\
+		& \qquad \qquad \qquad $G(\alpha f+g)=(\alpha f+g)(h)$ \\
+        & \qquad \qquad \qquad \qquad\qquad$=(\alpha f)(h)+g(h)$ \\
+        & \qquad \qquad \qquad \qquad\qquad$=\alpha f(h)+g(h)$ \\
+        & \qquad \qquad \qquad \qquad\qquad$=\alpha G(f)+G(g)$\\
+        &\\
+        &Thus, $G$ is a linear transformation\\
+        &\\
+		\hline
+		\multirow{3}{*}{Proving that $G$ is} & \\
+		& Now to show that $G$ is one to one,\\one-one transformation
+		&\\
+		& \qquad \qquad \qquad $G(f)=G(g)$ \\
+	    & \qquad \qquad \qquad $\therefore f(h)=g(h)$\\
+	    & \qquad \qquad $\sum_{i=0}^n c_i[h(x)]^i=\sum_{j=0}^m c_j[h(x)]^j$\\
+	    &\\
+	    &Here, $h(x)$ is parameter to both $f$ and $g$, hence $i=j$ and $c_i=c_j$. Thus,\\
+	    &\\
+	    & \qquad \qquad \qquad $f=g$\\
+	    &\\
+	    &Therefore, $G$ is one-one linear transformation \\
+	    &\\
+	    \hline
+	    \multirow{3}{*}{Proving $G$ is Isomorphism} & \\
+		&  Let deg$(h)=1$, then $h$ can be written as:\\ if and only if deg $h=1$.
+        &\\
+        & \qquad \qquad \qquad $h=a+bx$,  Where, $b \ne 0$ \\
+        &\\
+        & Let us define $h'$ such that:\\
+        &\\
+        & \qquad \qquad \qquad $h'=\frac1bx-\frac ab$ \\
+        &\\
+        & Let $G'$ be the linear transformation from $F(x)$ to $F(x)$ given by:\\
+        &\\
+        & \qquad \qquad \qquad $G’(f)=f\brak{\frac1bx-\frac ab}$ \\
+        &\\
+        & It can be shown that $G'$ is inverse of $G$ as follow: \\
+        & \qquad \qquad \qquad $G(G'(f))=G\brak{f\brak{\frac1bx-\frac ab}}$\\
+        &\\
+        \hline
+        &\\
+        & \qquad \qquad \qquad \qquad \qquad $=f\brak{a\brak{\frac1ax-\frac ba}+b}$\\
+        & \qquad \qquad \qquad \qquad \qquad $=f(x)$\\
+		& \\
+        &Similarly,\\
+        &\\ 
+        & \qquad \qquad \qquad $G'(G(f))=G'\brak{f\brak{ax+b}}$\\
+        & \qquad \qquad \qquad \qquad \qquad $=f\brak{\frac1a\brak{ax+b}-\frac ba}$\\
+        & \qquad \qquad \qquad \qquad \qquad $=f(x)$\\
+        &\\
+        &Thus, $G'$ is inverse of $G$. Therefore, $G$ is isomorphism and we can say: \\
+        &\\
+        & \qquad \qquad \qquad $\boxed{\deg(h)=1 \implies \text{$G$ is isomorphism.}}$ \\
+        &\\
+        & Let $\deg(h)>1$, then \\
+        &\\
+        & \qquad \qquad \qquad $\deg f(h)=\deg f\cdot \deg h $\\
+        & \qquad \qquad \qquad $\implies \deg f(h) \geq 1$\\
+        & \qquad \qquad \qquad $\implies G(f)=f(h) \ne x$\\
+        &This means the image of $G$ does not contain polynomials of degree one.\\
+        &Hence $G$ is not onto and therefore $G$ can not be an isomorphism.\\
+        &Thus we can write:\\
+        &\\
+        & \qquad \qquad \qquad $\boxed{\deg(h)>1 \implies \text{$G$ is not isomorphism.}}$ \\ 
+        &\\
+        &\\
+        & Thus, We can conclude:\\
+        &\\
+        &\qquad \qquad \qquad $\boxed{\text{$G$ is isomorphism.} \iff \deg(h)=1} $\\
+        &\\
+	    \hline
+    \end{longtable}
 \end{document}
